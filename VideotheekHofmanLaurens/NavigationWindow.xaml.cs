@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace VideotheekHofmanLaurens
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NavigationWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NavigationWindow : Window
     {
-        public MainWindow()
+        public NavigationWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            mainControl.Content = new DVDForm();
         }
     }
 }

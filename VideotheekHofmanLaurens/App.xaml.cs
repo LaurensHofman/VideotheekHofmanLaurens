@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using VideotheekLibrary.Data;
 
 namespace VideotheekHofmanLaurens
 {
@@ -13,5 +14,6 @@ namespace VideotheekHofmanLaurens
     /// </summary>
     public partial class App : Application
     {
+        AppDbContext ctx = AppDbContext.Instance(System.Configuration.ConfigurationManager.ConnectionStrings["AppDbCS"].ConnectionString);
     }
 }
