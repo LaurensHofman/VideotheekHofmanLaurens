@@ -47,18 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BL_DVD.cs" />
+    <Compile Include="DAL\DAL_DVD.cs" />
     <Compile Include="Data\AppDbContext.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\DVD.cs" />
+    <Compile Include="Migrations\201711251942288_Start.cs" />
+    <Compile Include="Migrations\201711251942288_Start.Designer.cs">
+      <DependentUpon>201711251942288_Start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BL\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711251942288_Start.resx">
+      <DependentUpon>201711251942288_Start.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

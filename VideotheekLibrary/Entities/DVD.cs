@@ -51,11 +51,10 @@ namespace VideotheekLibrary.Entities
         public string Genres { get; set; }
 
         [Column("DVD_type")]
-        [Required(ErrorMessage = "A DVD type is required")]
         public string DVDType { get; set; }
 
         [Column("movie_duration")]
-        public DateTime MovieDuration { get; set; }
+        public int MovieDuration { get; set; }
 
         [Column("series_episodes")]
         public string SeriesEpisodes { get; set; }

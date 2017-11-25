@@ -19,7 +19,7 @@ namespace VideotheekLibrary.Data
 
         #endregion
 
-        public AppDbContext() : base(@"Data Source = DESKTOP - QJLP9GV\LAURENSSQL; Initial Catalog = VideotheekHofmanLaurens; Persist Security Info=True;User ID = VideotheekHofmanLaurens; Password=hofmanlaurens")
+        public AppDbContext() : base(@"Data Source=DESKTOP-QJLP9GV\LAURENSSQL;Initial Catalog=VideotheekHofmanLaurens;Persist Security Info=True;User ID=VideotheekHofmanLaurens;Password=hofmanlaurens")
         {
 
         }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VideotheekLibrary.BL;
+using VideotheekLibrary.Entities;
 
 namespace VideotheekHofmanLaurens
 {
@@ -20,9 +22,77 @@ namespace VideotheekHofmanLaurens
     /// </summary>
     public partial class DVDForm : UserControl
     {
-        public DVDForm()
+        public delegate void ModelSavedEventHandler(DVD model);
+
+        public event ModelSavedEventHandler OnModelSaved;
+
+        public DVD Model { get; private set; }
+
+        public DVDForm() : this(new DVD()) { }
+
+        public DVDForm(DVD model)
         {
             InitializeComponent();
+
+            this.Model = model;
+      
+            grdDVDForm.DataContext = this;
+
+            SetTitle();
         }
+
+        private void SetTitle()
+        {
+            if (Model.IsNew())
+            {
+                lblTitle.Content = "New DVD";
+                btnSave.Content = "Save";
+            }
+            else
+            {
+                lblTitle.Content = "Edit DVD";
+                btnSave.Content = "Update";
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (BL_DVD.Save(Model))
+                {
+                    if (OnModelSaved != null)
+                        OnModelSaved(Model);
+                }
+                MessageBox.Show("You saved");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// Shows/hides the situational textboxes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbDVDType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbDVDType.SelectedItem == cmbiTVSeries)
+            {
+                lblDurationOrEpisodes.Content = "Amount of episodes: ";
+                txtDuration.Visibility = Visibility.Collapsed;
+                txtEpisodes.Visibility = Visibility.Visible;
+            }
+            if (cmbDVDType.SelectedItem == cmbiMovie)
+            {
+                lblDurationOrEpisodes.Content = "Total playtime (minutes): ";
+                txtDuration.Visibility = Visibility.Visible;
+                txtEpisodes.Visibility = Visibility.Collapsed;
+            }
+           
+        }
+
     }
 }

@@ -8,6 +8,8 @@
         Title="VideotheekHofmanLaurens" Height="350" Width="525" WindowState="Maximized">
     <Grid x:Name="grdNavigationWindow">
         <ContentControl x:Name="mainControl" Margin="10,150,10,10"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="59" Margin="248,82,0,0" VerticalAlignment="Top" Width="191" Click="Button_Click"/>
+        <Ribbon Height="145" VerticalAlignment="Top" Margin="0,0,0.4,0">
+            <Button Content="Button" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="191" Click="Button_Click"/>
+        </Ribbon>
     </Grid>
 </Window>
