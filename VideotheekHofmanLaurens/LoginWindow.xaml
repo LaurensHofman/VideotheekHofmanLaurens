@@ -7,19 +7,33 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="wndLoginWindow" 
     x:Class="VideotheekHofmanLaurens.LoginWindow"
         mc:Ignorable="d"
-        Title="Login" Height="500" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-
+        Height="500" Title="Login 't Videotheeksken" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="wndLoginWindow_Closing">
+    <Window.Resources>
+        <Image x:Key="Show" Source="Resources/Icons/16iconEye.png" Height="16" Width="16" />
+        <Image x:Key="Hide" Source="Resources/Icons/16iconEyeClose.png" Height="16" Width="16"/>
+    </Window.Resources>
     <Grid x:Name="grdLoginWindow">
         <Image x:Name="imgLoginVideotheek" Margin="0,0,-0.4,0.4" Source="Resources/Images/Cinema Screen.jpg"  Height="470" VerticalAlignment="Bottom" Stretch="UniformToFill"/>
         <Label x:Name="lblLoginTitle" Content="Welcome to 't Videotheeksken" HorizontalContentAlignment="Center" FontSize="20" Height="40" Margin="10,10,10,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
-        <Label x:Name="lblLogin" Content="Please enter your login credentials" HorizontalContentAlignment="Center" FontSize="16" Height="40" Margin="10,100,10,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
+        <Label x:Name="lblLoginCredentials" Content="Please enter your login credentials" HorizontalContentAlignment="Center" FontSize="16" Height="40" Margin="10,80,10,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
+        <Label x:Name="lblWrongCredentials" Visibility="Collapsed" Content="Your username and/or password were wrong" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="10,125,9.6,0" Foreground="#FFD90000"/>
 
         <Label x:Name="lblUsername" Content="Username:" HorizontalContentAlignment="Right" FontSize="16" Height="30" Margin="10,160,443.6,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
-        <TextBox x:Name="txtUsername" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="250,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="txtUsername" KeyboardNavigation.TabIndex="0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="250,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <Label x:Name="lblEmptyUsername" Visibility="Collapsed" Content="A username is mandatory" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="10,195,9.6,0" Foreground="#FFD90000"/>
 
-        <Label x:Name="lblPassword" Content="Password:" HorizontalContentAlignment="Right" FontSize="16" Height="30" Margin="10,210,443.6,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
-        <PasswordBox x:Name="pwdPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="30" Width="200" Margin="250,210,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Height="25" Margin="250,260,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="lblPassword" Content="Password:" HorizontalContentAlignment="Right" FontSize="16" Height="30" Margin="10,240,443.6,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
+        <PasswordBox x:Name="pwdPassword" KeyboardNavigation.TabIndex="1" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="30" Width="200" Margin="250,240,0,0" VerticalAlignment="Top" PasswordChanged="pwdPassword_PasswordChanged"/>
+        <Label x:Name="lblEmptyPassword" Visibility="Collapsed" FontSize="16" Content="A password is mandatory" HorizontalContentAlignment="Center" Foreground="#FFD90000" VerticalAlignment="Top" Margin="10,275,9.6,0"/>
+
+        <TextBox x:Name="txtPasswordVisible" Visibility="Collapsed" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="30" Width="200" Margin="250,240,0,0" VerticalAlignment="Top" TextChanged="txtPasswordVisible_TextChanged"/>
+        <Button x:Name="btnShowHidePassword" Background="#FFFFCC86" HorizontalAlignment="Left" Margin="420,240,0,0" VerticalAlignment="Top" Width="30" Height="30" Click="btnShowHidePassword_Click">
+            <DynamicResource ResourceKey="Show"></DynamicResource>
+        </Button>
+
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Height="25" Margin="250,320,0,0" VerticalAlignment="Top" Width="80" Click="btnExit_Click" Background="#FFFFCC86" BorderBrush="{x:Null}"/>
+        <Button x:Name="btnLogin" IsDefault="True" Content="Login" HorizontalAlignment="Left" Height="25" Margin="370,320,0,0" VerticalAlignment="Top" Width="80" Click="btnLogin_Click" Background="#FFFFCC86" BorderBrush="{x:Null}"/>
+        
 
 
 

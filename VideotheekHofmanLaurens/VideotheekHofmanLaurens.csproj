@@ -129,12 +129,17 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Video.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16iconEye.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Cinema Screen.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\Cassette16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16iconEyeClose.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
