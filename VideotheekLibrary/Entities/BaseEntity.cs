@@ -37,7 +37,7 @@ namespace VideotheekLibrary.Entities
         /// </summary>
         [Column("deleted_at")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy")]
-        public DateTime DeletedAt { get; set; }
+        public DateTime? DeletedAt { get; set; }
 
         /// <summary>
         /// Checks whether the object is new

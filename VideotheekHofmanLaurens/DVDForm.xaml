@@ -9,14 +9,14 @@
     <Grid x:Name="grdDVDForm">
         <Label x:Name="lblTitle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" Content="Title placeholder" Margin="10,0" Height="39" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblName" Content="* _Name:" Target="{Binding ElementName=txtName}" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,50,400,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblName" Content="* Name:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,50,400,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtName" FontSize="14" Text="{Binding Path=Model.Name}" VerticalContentAlignment="Center" Height="30" Margin="200,50,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
         <Label x:Name="lblStock" Content="* Current Stock:" Height="30" FontSize="16" Margin="10,90,400,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtStock" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,90,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.Stock}" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtStock" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,90,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.Stock}" VerticalAlignment="Top" GotKeyboardFocus="txtStock_GotKeyboardFocus"/>
 
-        <Label x:Name="lblPricePerWeek" Content="* Price per week (€):" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,130,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtPricePerWeek" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,130,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.PricePerWeek}" VerticalAlignment="Top"/>
+        <Label x:Name="lblPricePerDay" Content="* Price per day (€):" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,130,400,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPricePerDay" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,130,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.PricePerDay}" VerticalAlignment="Top" GotKeyboardFocus="txtPricePerDay_GotKeyboardFocus"/>
 
         <Label x:Name="lblDescription" Content="Description:" Height="30" FontSize="16" Margin="10,170,400,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
         <TextBox x:Name="txtDescription" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,170,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.Description}" VerticalAlignment="Top"/>
@@ -37,10 +37,10 @@
         </ComboBox>
 
         <Label x:Name="lblDurationOrEpisodes" Height="30" HorizontalContentAlignment="Right" FontSize="16" Margin="10,370,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDuration" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="200,370,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.MovieDuration}" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtEpisodes" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="200,370,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.SeriesEpisodes}" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDuration" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="200,370,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.MovieDuration}" VerticalAlignment="Top" GotKeyboardFocus="txtDuration_GotKeyboardFocus"/>
+        <TextBox x:Name="txtEpisodes" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="200,370,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.SeriesEpisodes}" VerticalAlignment="Top" GotKeyboardFocus="txtEpisodes_GotKeyboardFocus"/>
         
-        <Button x:Name="btnSave" Content="Save" FontSize="18" HorizontalAlignment="Left" Margin="490,410,10,0" VerticalAlignment="Top" Width="100" Height="45"/>
+        <Button x:Name="btnSave" Content="Save" FontSize="18" HorizontalAlignment="Left" Margin="490,410,10,0" VerticalAlignment="Top" Width="100" Height="45" Click="btnSave_Click" />
 
     </Grid>
 </UserControl>
