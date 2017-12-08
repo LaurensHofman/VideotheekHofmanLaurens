@@ -86,8 +86,7 @@ namespace VideotheekHofmanLaurens
             lblPriceError.Visibility = Visibility.Collapsed;
             lblPEGIError.Visibility = Visibility.Collapsed;
             lblDurationEpisodesError.Visibility = Visibility.Collapsed;
-
-            txtStock.BorderBrush = null;
+;
             #endregion
 
             #region Validates to avoid possible entity errors

@@ -121,6 +121,9 @@ namespace VideotheekHofmanLaurens
         private void txtPasswordVisible_TextChanged(object sender, TextChangedEventArgs e)
         {
             pwdPassword.Password = txtPasswordVisible.Text;
+            int start = txtPasswordVisible.Text.Length;
+            int length = 0;
+            txtPasswordVisible.Select(start, length);
         }
 
         private void pwdPassword_PasswordChanged(object sender, RoutedEventArgs e)

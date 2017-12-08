@@ -85,6 +85,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ClientOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DVDForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +111,9 @@
     </Compile>
     <Compile Include="ClientForm.xaml.cs">
       <DependentUpon>ClientForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientOverview.xaml.cs">
+      <DependentUpon>ClientOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="DVDForm.xaml.cs">
       <DependentUpon>DVDForm.xaml</DependentUpon>
