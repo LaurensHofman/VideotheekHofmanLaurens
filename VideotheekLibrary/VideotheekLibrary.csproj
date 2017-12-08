@@ -47,10 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BL_Client.cs" />
     <Compile Include="BL\BL_DVD.cs" />
+    <Compile Include="DAL\DAL_Client.cs" />
     <Compile Include="DAL\DAL_DVD.cs" />
     <Compile Include="Data\AppDbContext.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\DVD.cs" />
     <Compile Include="Migrations\201711251942288_Start.cs" />
     <Compile Include="Migrations\201711251942288_Start.Designer.cs">
@@ -68,6 +71,18 @@
     <Compile Include="Migrations\201711270816181_PricePerDAY.Designer.cs">
       <DependentUpon>201711270816181_PricePerDAY.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712041101222_Price.cs" />
+    <Compile Include="Migrations\201712041101222_Price.Designer.cs">
+      <DependentUpon>201712041101222_Price.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081241431_Client2.cs" />
+    <Compile Include="Migrations\201712081241431_Client2.Designer.cs">
+      <DependentUpon>201712081241431_Client2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081317253_NullableInt.cs" />
+    <Compile Include="Migrations\201712081317253_NullableInt.Designer.cs">
+      <DependentUpon>201712081317253_NullableInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,15 +93,31 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711251942288_Start.resx">
       <DependentUpon>201711251942288_Start.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711251959003_deletednull.resx">
       <DependentUpon>201711251959003_deletednull.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711252018253_intEpisodes.resx">
       <DependentUpon>201711252018253_intEpisodes.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711270816181_PricePerDAY.resx">
       <DependentUpon>201711270816181_PricePerDAY.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712041101222_Price.resx">
+      <DependentUpon>201712041101222_Price.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081241431_Client2.resx">
+      <DependentUpon>201712081241431_Client2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081317253_NullableInt.resx">
+      <DependentUpon>201712081317253_NullableInt.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

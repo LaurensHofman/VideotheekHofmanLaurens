@@ -8,13 +8,13 @@ using VideotheekLibrary.Entities;
 
 namespace VideotheekLibrary.BL
 {
-    public static class BL_DVD
+    public static class BL_Client
     {
-        public static List<DVD> GetAll()
+        public static List<Client> GetAll()
         {
             try
             {
-                return DAL_DVD.GetAll();
+                return DAL_Client.GetAll();
             }
             catch (Exception)
             {
@@ -23,7 +23,7 @@ namespace VideotheekLibrary.BL
             }
         }
 
-        public static bool Save(DVD model)
+        public static bool Save(Client model)
         {
             try
             {
@@ -42,11 +42,11 @@ namespace VideotheekLibrary.BL
             return true;
         }
 
-        private static void Update(DVD model)
+        private static void Update(Client model)
         {
             try
             {
-                DAL_DVD.Update(model);
+                DAL_Client.Update(model);
             }
             catch (Exception)
             {
@@ -55,11 +55,11 @@ namespace VideotheekLibrary.BL
             }
         }
 
-        private static void Create(DVD model)
+        private static void Create(Client model)
         {
             try
             {
-                DAL_DVD.Create(model);
+                DAL_Client.Create(model);
             }
             catch (Exception)
             {
@@ -68,7 +68,7 @@ namespace VideotheekLibrary.BL
             }
         }
 
-        public static void Delete(DVD model)
+        public static void Delete(Client model)
         {
             try
             {
@@ -81,5 +81,6 @@ namespace VideotheekLibrary.BL
                 throw;
             }
         }
+
     }
 }

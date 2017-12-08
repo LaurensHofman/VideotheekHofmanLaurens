@@ -7,7 +7,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="wndLoginWindow" 
     x:Class="VideotheekHofmanLaurens.LoginWindow"
         mc:Ignorable="d"
-        Height="500" Title="Login 't Videotheeksken" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="wndLoginWindow_Closing">
+        Height="500" Title="Login 't Videotheeksken" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"  Closing="wndLoginWindow_Closing" Icon="Resources/Icons/64cassette_88Z_icon.ico">
     <Window.Resources>
         <Image x:Key="Show" Source="Resources/Icons/16iconEye.png" Height="16" Width="16" />
         <Image x:Key="Hide" Source="Resources/Icons/16iconEyeClose.png" Height="16" Width="16"/>

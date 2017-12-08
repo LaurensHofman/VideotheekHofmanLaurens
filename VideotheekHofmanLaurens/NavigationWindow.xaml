@@ -5,11 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideotheekHofmanLaurens"
         mc:Ignorable="d"
-        Title="VideotheekHofmanLaurens" Height="350" Width="525" WindowState="Maximized">
+        Title="VideotheekHofmanLaurens" Height="350" Width="525" WindowState="Maximized" Closing="Window_Closing" Icon="Resources/Icons/64cassette_88Z_icon.ico" >
     <Grid x:Name="grdNavigationWindow">
         <ContentControl x:Name="mainControl" Margin="10,150,10,10"/>
         <Ribbon Height="145" VerticalAlignment="Top" Margin="0,0,0.4,0">
-            <Button Content="Button" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="191" Click="Button_Click"/>
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="M">
+                    <RibbonApplicationMenuItem x:Name="ramiExit" Header="Exit program" ImageSource="Resources/Icons/64Exit.png" Click="ramiExit_Click" />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Home" KeyTip="H">
+                <RibbonGroup Header="DVD's">
+                    <RibbonButton x:Name="rbtnAddDVD"  Label=" Add new DVD" Click="rbtnAddDVD_Click" SmallImageSource="Resources/Icons/64DVDAdd.png" />
+                    <RibbonButton x:Name="rbtnOverviewDVD" SmallImageSource="Resources/Icons/64DVDOverview.png" Label=" DVD Overview" Click="rbtnOverviewDVD_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Clients">
+                    <RibbonButton x:Name="rbtnAddClients"  Label=" Add new client" SmallImageSource="Resources/Icons/64PersonAdd.png" Click="rbtnAddClients_Click" />
+                    <RibbonButton x:Name="rbtnClientOverview" SmallImageSource="Resources/Icons/64GroupPeople.png" Label=" Client Overview"/>
+                </RibbonGroup>
+            </RibbonTab>
         </Ribbon>
     </Grid>
 </Window>

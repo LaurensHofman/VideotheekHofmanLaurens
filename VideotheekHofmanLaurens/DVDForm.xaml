@@ -5,42 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VideotheekHofmanLaurens"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Background="White" Height="750" Width="600">
+             d:DesignHeight="300" d:DesignWidth="300" Background="White" Height="750" Width="900">
     <Grid x:Name="grdDVDForm">
         <Label x:Name="lblTitle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" Content="Title placeholder" Margin="10,0" Height="39" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblName" Content="* Name:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,50,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtName" FontSize="14" Text="{Binding Path=Model.Name}" VerticalContentAlignment="Center" Height="30" Margin="200,50,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="lblNameError" Content="Name cannot be empty" Height="30" FontSize="14" Margin="10,50,0,0" HorizontalContentAlignment="Left" Foreground="Red" Visibility="Collapsed" VerticalAlignment="Top"/>
+        <Label x:Name="lblName" Content="* Name:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,50,500,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" FontSize="14" Text="{Binding Path=Model.Name}" VerticalContentAlignment="Center" Height="30" Margin="400,50,110,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblStock" Content="* Current Stock:" Height="30" FontSize="16" Margin="10,90,400,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtStock" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,90,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.Stock}" VerticalAlignment="Top" GotKeyboardFocus="txtStock_GotKeyboardFocus"/>
+        <Label x:Name="lblStockError" Content="" Height="30" FontSize="14" Visibility="Collapsed" Margin="10,90,0,0" HorizontalContentAlignment="Left" Foreground="Red" VerticalAlignment="Top"/>
+        <Label x:Name="lblStock" Content="* Stock:" Height="30" FontSize="16" Margin="10,90,500,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtStock" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="400,90,380,0" TextWrapping="Wrap" Text="{Binding Path=Model.Stock}" VerticalAlignment="Top" GotKeyboardFocus="txtStock_GotKeyboardFocus"/>
 
-        <Label x:Name="lblPricePerDay" Content="* Price per day (€):" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,130,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtPricePerDay" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,130,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.PricePerDay}" VerticalAlignment="Top" GotKeyboardFocus="txtPricePerDay_GotKeyboardFocus"/>
+        <Label x:Name="lblPriceError" Content="Cannot be empty" Height="30" FontSize="14" Margin="10,130,0,0" HorizontalContentAlignment="Left" Foreground="Red" VerticalAlignment="Top"/>
+        <Label x:Name="lblPrice" Content="* Price (€):" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,130,500,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPrice" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="400,130,380,0" TextWrapping="Wrap" Text="{Binding Path=Model.Price}" VerticalAlignment="Top" GotKeyboardFocus="txtPrice_GotKeyboardFocus"/>
 
-        <Label x:Name="lblDescription" Content="Description:" Height="30" FontSize="16" Margin="10,170,400,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDescription" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,170,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.Description}" VerticalAlignment="Top"/>
+        <Label x:Name="lblDescription" Content="Description:" Height="30" FontSize="16" Margin="10,170,500,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDescription" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="400,170,110,0" TextWrapping="Wrap" Text="{Binding Path=Model.Description}" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblDirector" Content="Director:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,210,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDirector" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,210,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.Director}" VerticalAlignment="Top"/>
+        <Label x:Name="lblDirector" Content="Director:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,210,500,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDirector" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="400,210,110,0" TextWrapping="Wrap" Text="{Binding Path=Model.Director}" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblGenres" Content="Genres:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,250,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtGenres" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,250,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.Genres}" VerticalAlignment="Top"/>
+        <Label x:Name="lblGenres" Content="Genres:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,250,500,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtGenres" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="400,250,110,0" TextWrapping="Wrap" Text="{Binding Path=Model.Genres}" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblPEGI" Content="PEGI advised age:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,290,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtPEGI" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,290,350,0" TextWrapping="Wrap" Text="{Binding Path=Model.PEGIage}" VerticalAlignment="Top"/>
+        <Label x:Name="lblPEGI" Content="PEGI minimum age:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,290,500,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPEGI" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="400,290,380,0" TextWrapping="Wrap" Text="{Binding Path=Model.PEGIage}" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblDVDType" Content="DVD Type:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,330,400,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cmbDVDType" SelectedValue="{Binding Path=Model.DVDType}" FontSize="16" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="200,330,10,0" VerticalAlignment="Top" Height="30" Width="120" SelectionChanged="cmbDVDType_SelectionChanged">
+        <Label x:Name="lblDVDType" Content="DVD Type:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,330,500,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbDVDType"
+                  SelectedValuePath="Content" SelectedValue="{Binding Path=Model.DVDType}" FontSize="16" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="400,330,10,0" VerticalAlignment="Top" Height="30" Width="120" SelectionChanged="cmbDVDType_SelectionChanged">
             <ComboBoxItem x:Name="cmbiMovie">Movie</ComboBoxItem>
             <ComboBoxItem x:Name="cmbiTVSeries">TV-Series</ComboBoxItem>
         </ComboBox>
 
-        <Label x:Name="lblDurationOrEpisodes" Height="30" HorizontalContentAlignment="Right" FontSize="16" Margin="10,370,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDuration" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="200,370,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.MovieDuration}" VerticalAlignment="Top" GotKeyboardFocus="txtDuration_GotKeyboardFocus"/>
-        <TextBox x:Name="txtEpisodes" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="200,370,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.SeriesEpisodes}" VerticalAlignment="Top" GotKeyboardFocus="txtEpisodes_GotKeyboardFocus"/>
-        
-        <Button x:Name="btnSave" Content="Save" FontSize="18" HorizontalAlignment="Left" Margin="490,410,10,0" VerticalAlignment="Top" Width="100" Height="45" Click="btnSave_Click" />
+        <Label x:Name="lblDurationOrEpisodes" Height="30" HorizontalContentAlignment="Right" FontSize="16" Margin="10,370,500,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDuration" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="400,370,380,0" TextWrapping="Wrap" Text="{Binding Path=Model.MovieDuration}" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtEpisodes" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="400,370,380,0" TextWrapping="Wrap" Text="{Binding Path=Model.SeriesEpisodes}" VerticalAlignment="Top"/>
+
+        <Button x:Name="btnSave" Content="Save" FontSize="18" Margin="590,408,210,0" VerticalAlignment="Top" Height="45" Click="btnSave_Click" />
 
     </Grid>
 </UserControl>

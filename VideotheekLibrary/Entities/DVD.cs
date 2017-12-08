@@ -31,12 +31,12 @@ namespace VideotheekLibrary.Entities
         [Range(0, 99999, ErrorMessage = "The stock cannot be lower than 0")]
         public int Stock { get; set; }
 
-        [Column("price_per_day")]
+        [Column("price")]
         [Required(ErrorMessage = "A price per day is required")]
-        [Range(0.00, 99999, ErrorMessage = "A price must be greater than € 0,00")]
-        [DisplayFormat(DataFormatString = "{0:0,0}")]
-        [DisplayName("Price per day (€)")]
-        public Decimal PricePerDay { get; set; }
+        [Range(0.00, 99999, ErrorMessage = "A price must be greater than € 0.00")]
+        [DisplayFormat(DataFormatString = "{0:0, 0.00}")]
+        [DisplayName("Price (€)")]
+        public Decimal Price{ get; set; }
 
         [Column("director")]
         public string Director { get; set; }
@@ -55,11 +55,11 @@ namespace VideotheekLibrary.Entities
 
         [Column("movie_duration")]
         [Range(0, 99999, ErrorMessage = "The movie duration has to be at least 0 minutes")]
-        public int MovieDuration { get; set; }
+        public int? MovieDuration { get; set; }
 
         [Column("series_episodes")]
         [Range(0, 99999, ErrorMessage = "The amount of episodes has to be at least 0")]
-        public int SeriesEpisodes { get; set; }
+        public int? SeriesEpisodes { get; set; }
         
 
 

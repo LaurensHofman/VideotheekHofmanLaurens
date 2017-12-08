@@ -1,39 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VideotheekLibrary.Data;
 using VideotheekLibrary.Entities;
-using System.Data.Entity;
 
 namespace VideotheekLibrary.DAL
 {
-    public static class DAL_DVD
+    public static class DAL_Client
     {
-        public static List<DVD> GetAll()
+        public static List<Client> GetAll()
         {
             var ctx = AppDbContext.Instance();
 
-            return ctx.DVDs
-                .Where(dvd => dvd.DeletedAt == null)
+            return ctx.Clients
+                .Where(c => c.DeletedAt == null)
                 .ToList();
         }
 
-        public static void Create(DVD model)
+        public static void Create(Client model)
         {
             var ctx = AppDbContext.Instance();
 
-            ctx.DVDs.Add(model);
+            ctx.Clients.Add(model);
             ctx.SaveChanges();
         }
 
-        public static void Update(DVD model)
+        public static void Update(Client model)
         {
             var ctx = AppDbContext.Instance();
 
             ctx.Entry(model).State = EntityState.Modified;
             ctx.SaveChanges();
         }
+
+
+
     }
 }
