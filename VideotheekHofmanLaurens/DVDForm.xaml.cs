@@ -24,7 +24,6 @@ namespace VideotheekHofmanLaurens
     public partial class DVDForm : UserControl
     {
         public delegate void ModelSavedEventHandler(DVD model);
-
         public event ModelSavedEventHandler OnModelSaved;
 
         public DVD Model { get; private set; }
@@ -85,19 +84,22 @@ namespace VideotheekHofmanLaurens
             lblNameError.Visibility = Visibility.Collapsed;
             lblStockError.Visibility = Visibility.Collapsed;
             lblPriceError.Visibility = Visibility.Collapsed;
+            lblPEGIError.Visibility = Visibility.Collapsed;
+            lblDurationEpisodesError.Visibility = Visibility.Collapsed;
 
+            txtStock.BorderBrush = null;
             #endregion
 
-            #region Avoids possible entity errors
+            #region Validates to avoid possible entity errors
 
             #region Validates name
-            if (string.IsNullOrWhiteSpace(txtName.Text))
+            if (string.IsNullOrWhiteSpace(Model.Name))
             {
                 lblNameError.Content = "Cannot be empty";
                 lblNameError.Visibility = Visibility.Visible;
                 validation = false;
             }
-            else if (txtName.Text.Length > 255)
+            else if (Model.Name.Length > 255)
             {
                 lblNameError.Content = "Cannot be longer than 255 characters";
                 lblNameError.Visibility = Visibility.Visible;
@@ -112,20 +114,19 @@ namespace VideotheekHofmanLaurens
                 lblStockError.Visibility = Visibility.Visible;
                 validation = false;
             }
-            else if (!Int32.TryParse(txtStock.Text, out int number))
+            else if (!int.TryParse(txtStock.Text, out int result))
             {
                 lblStockError.Content = "Has to be a whole number";
                 lblStockError.Visibility = Visibility.Visible;
                 validation = false;
             }
-            
             else if (Model.Stock < 0)
             {
                 lblStockError.Content = "Cannot be below 0";
-                lblNameError.Visibility = Visibility.Visible;
+                lblStockError.Visibility = Visibility.Visible;
                 validation = false;
             }
-            else if (int.Parse(txtStock.Text) > 99999)
+            else if (Model.Stock > 99999)
             {
                 lblStockError.Content = "Cannot be higher than 99999";
                 lblStockError.Visibility = Visibility.Visible;
@@ -140,11 +141,98 @@ namespace VideotheekHofmanLaurens
                 lblPriceError.Visibility = Visibility.Visible;
                 validation = false;
             }
+            else if (!Decimal.TryParse(txtPrice.Text, out decimal result))
+            {
+                lblPriceError.Content = "Has to be a valid number";
+                lblPriceError.Visibility = Visibility.Visible;
+                validation = false;
+            }
             else if (Model.Price < (decimal)0.00)
             {
                 lblPriceError.Content = "Cannot be below € 0.00";
                 lblPriceError.Visibility = Visibility.Visible;
                 validation = false;
+            }
+            else if (Model.Price > (decimal)99999.00)
+            {
+                lblPriceError.Content = "Cannot be over € 99999.00";
+                lblPriceError.Visibility = Visibility.Visible;
+                validation = false;
+            }
+            #endregion
+
+            #region Validates PEGI age
+            if (!string.IsNullOrWhiteSpace(txtPEGI.Text))
+            {
+                if (!int.TryParse(txtPEGI.Text, out int result))
+                {
+                    lblPEGIError.Content = "Has to be a whole number";
+                    lblPEGIError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+                else if (Model.PEGIage < 0)
+                {
+                    lblPEGIError.Content = "Cannot be below 0";
+                    lblPEGIError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+                else if (Model.PEGIage > 18)
+                {
+                    lblPEGIError.Content = "PEGI age doesn't go over 18";
+                    lblPEGIError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+                 
+            }
+            #endregion
+
+            #region Validates MovieDuration
+            if (!string.IsNullOrWhiteSpace(txtDuration.Text))
+            {
+                if (!int.TryParse(txtDuration.Text, out int result))
+                {
+                    lblDurationEpisodesError.Content = "Has to be a whole number";
+                    lblDurationEpisodesError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+                else if (Model.MovieDuration < 0)
+                {
+                    lblDurationEpisodesError.Content = "Cannot be below 0";
+                    lblDurationEpisodesError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+                else if (Model.MovieDuration > 99999)
+                {
+                    lblDurationEpisodesError.Content = "Cannot be over 99999";
+                    lblDurationEpisodesError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+
+            }
+            #endregion
+
+            #region Validates TVSeriesEpisodes
+            if (!string.IsNullOrWhiteSpace(txtEpisodes.Text))
+            {
+                if (!int.TryParse(txtEpisodes.Text, out int result))
+                {
+                    lblDurationEpisodesError.Content = "Has to be a whole number";
+                    lblDurationEpisodesError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+                else if (Model.SeriesEpisodes < 0)
+                {
+                    lblDurationEpisodesError.Content = "Cannot be below 0";
+                    lblDurationEpisodesError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+                else if (Model.SeriesEpisodes > 99999)
+                {
+                    lblDurationEpisodesError.Content = "Cannot be over 99999";
+                    lblDurationEpisodesError.Visibility = Visibility.Visible;
+                    validation = false;
+                }
+
             }
             #endregion
 
@@ -158,16 +246,16 @@ namespace VideotheekHofmanLaurens
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cmbDVDType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cmbxDVDType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cmbDVDType.SelectedItem == cmbiTVSeries)
+            if (cmbxDVDType.SelectedItem == cmbxiTVSeries)
             {
                 lblDurationOrEpisodes.Content = "Amount of episodes: ";
                 txtDuration.Visibility = Visibility.Collapsed;
                 txtEpisodes.Visibility = Visibility.Visible;
                 txtDuration.Text = "";
             }
-            if (cmbDVDType.SelectedItem == cmbiMovie)
+            if (cmbxDVDType.SelectedItem == cmbxiMovie)
             {
                 lblDurationOrEpisodes.Content = "Total playtime (minutes): ";
                 txtDuration.Visibility = Visibility.Visible;
