@@ -21,7 +21,7 @@
                 </RibbonGroup>
                 <RibbonGroup Header="Clients">
                     <RibbonButton x:Name="rbtnAddClients"  Label=" Add new client" SmallImageSource="Resources/Icons/64PersonAdd.png" Click="rbtnAddClients_Click" />
-                    <RibbonButton x:Name="rbtnClientOverview" SmallImageSource="Resources/Icons/64GroupPeople.png" Label=" Client Overview"/>
+                    <RibbonButton x:Name="rbtnClientOverview" SmallImageSource="Resources/Icons/64GroupPeople.png" Label=" Client Overview" Click="rbtnClientOverview_Click"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

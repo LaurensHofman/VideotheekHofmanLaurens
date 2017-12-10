@@ -105,12 +105,39 @@ namespace VideotheekHofmanLaurens
         #region Client Form and Overview
         private void rbtnAddClients_Click(object sender, RoutedEventArgs e)
         {
+            var _form = new ClientForm();
+            _form.OnModelSaved += ClientForm_OnModelSaved;
+
+            mainControl.Content = _form;
+        }  
+
+        private void rbtnClientOverview_Click(object sender, RoutedEventArgs e)
+        {
             SetTitleByRibbonButton(sender);
 
-            mainControl.Content = new ClientForm();
+            var _overview = new ClientOverview();
+            _overview.OnUpdateClient += ClientOverview_OnUpdateClient;
+
+            mainControl.Content = _overview;
         }
+
+        private void ClientOverview_OnUpdateClient(Client model)
+        {
+            SetTitle("Edit client");
+
+            ClientForm _form = new ClientForm(model);
+            _form.OnModelSaved += ClientForm_OnModelSaved;
+
+            mainControl.Content = _form;
+        }
+
+        private void ClientForm_OnModelSaved(Client model)
+        {
+            rbtnClientOverview_Click(rbtnClientOverview, null);
+        }
+
         #endregion
 
-        
+
     }
 }

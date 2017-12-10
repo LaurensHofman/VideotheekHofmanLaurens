@@ -5,22 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VideotheekHofmanLaurens"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Background="White" Height="750" Width="600">
+             d:DesignHeight="300" d:DesignWidth="300" Background="White" Height="750" Width="900">
     <Grid x:Name="grdClientForm">
         <Label x:Name="lblTitle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" Content="Title placeholder" Margin="10,0" Height="39" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblSurname" Content="* Surname:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,50,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSurname" FontSize="14" Text="{Binding Path=Model.Surname}" VerticalContentAlignment="Center" Height="30" Margin="200,50,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="lblSurname" Content="* Surname:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,50,500,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSurname" FontSize="14" Text="{Binding Path=Model.Surname}" VerticalContentAlignment="Center" Height="30" Margin="400,50,110,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblFirstName" Content="* First Name:" Height="30" FontSize="16" Margin="10,90,400,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtFirstName" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,90,10,0" TextWrapping="Wrap" Text="{Binding Path=Model.FirstName}" VerticalAlignment="Top"/>
+        <Label x:Name="lblFirstName" Content="* First Name:" Height="30" FontSize="16" Margin="10,90,500,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFirstName" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="400,90,110,0" TextWrapping="Wrap" Text="{Binding Path=Model.FirstName}" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblBirthDate" Content="* Birth Date:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,130,400,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBirthDay" MaxLength="2" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="200,130,360,0" Text="" VerticalAlignment="Top" TextChanged="txtBirthDay_TextChanged"/>
-        <Label x:Name="lblSlashDateMonth" Content="/" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="240,130,340,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBirthMonth" MaxLength="2" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="261,130,299,0" Text="" VerticalAlignment="Top" TextChanged="txtBirthMonth_TextChanged"/>
-        <Label x:Name="lblSlashMonthYear" Content="/" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="301,130,279,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBirthYear" MaxLength="4" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="326,130,214,0" Text="" VerticalAlignment="Top"/>
-        <Button x:Name="btnSave" Content="Save" FontSize="18" HorizontalAlignment="Left" Margin="490,174,0,0" VerticalAlignment="Top" Width="100" Height="45" Click="btnSave_Click" />
+        <Label x:Name="lblBirthDate" Content="* Birth Date:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,130,500,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBirthDay" MaxLength="2" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="400,130,460,0" Text="" VerticalAlignment="Top" TextChanged="txtBirthDay_TextChanged"/>
+        <Label x:Name="lblSlashDateMonth" Content="/" HorizontalContentAlignment="Center" Height="30" FontSize="16" Margin="440,130,440,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBirthMonth" MaxLength="2" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="460,130,400,0" Text="" VerticalAlignment="Top" TextChanged="txtBirthMonth_TextChanged"/>
+        <Label x:Name="lblSlashMonthYear" Content="/" HorizontalContentAlignment="Center" Height="30" FontSize="16" Margin="500,130,380,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBirthYear" MaxLength="4" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="520,130,340,0" Text="" VerticalAlignment="Top"/>
+        <Button x:Name="btnSave" Content="Save" FontSize="18" HorizontalAlignment="Left" Margin="690,170,0,0" VerticalAlignment="Top" Width="100" Height="45" Click="btnSave_Click" />
     </Grid>
 </UserControl>

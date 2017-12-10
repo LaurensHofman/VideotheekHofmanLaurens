@@ -35,6 +35,5 @@ namespace VideotheekLibrary.Entities
         [Required(ErrorMessage = "A birth date is required")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
-        
     }
 }

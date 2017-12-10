@@ -39,6 +39,8 @@ namespace VideotheekHofmanLaurens
             grdDVDForm.DataContext = this;
 
             SetTitle();
+
+            
         }
 
         private void SetTitle()
@@ -75,6 +77,10 @@ namespace VideotheekHofmanLaurens
             }
         }
 
+        /// <summary>
+        /// Validates the values from the textboxes to avoid errors in the DVD Model
+        /// </summary>
+        /// <returns></returns>
         private bool Validate()
         {
             bool validation = true;
@@ -86,7 +92,7 @@ namespace VideotheekHofmanLaurens
             lblPriceError.Visibility = Visibility.Collapsed;
             lblPEGIError.Visibility = Visibility.Collapsed;
             lblDurationEpisodesError.Visibility = Visibility.Collapsed;
-;
+
             #endregion
 
             #region Validates to avoid possible entity errors
@@ -175,9 +181,9 @@ namespace VideotheekHofmanLaurens
                     lblPEGIError.Visibility = Visibility.Visible;
                     validation = false;
                 }
-                else if (Model.PEGIage > 18)
+                else if (Model.PEGIage > 21)
                 {
-                    lblPEGIError.Content = "PEGI age doesn't go over 18";
+                    lblPEGIError.Content = "PEGI age doesn't go over 21";
                     lblPEGIError.Visibility = Visibility.Visible;
                     validation = false;
                 }
@@ -252,14 +258,14 @@ namespace VideotheekHofmanLaurens
                 lblDurationOrEpisodes.Content = "Amount of episodes: ";
                 txtDuration.Visibility = Visibility.Collapsed;
                 txtEpisodes.Visibility = Visibility.Visible;
-                txtDuration.Text = "";
+                txtDuration.Text = null;
             }
             if (cmbxDVDType.SelectedItem == cmbxiMovie)
             {
                 lblDurationOrEpisodes.Content = "Total playtime (minutes): ";
                 txtDuration.Visibility = Visibility.Visible;
                 txtEpisodes.Visibility = Visibility.Collapsed;
-                txtEpisodes.Text = "";
+                txtEpisodes.Text = null;
             }
            
         }
@@ -282,5 +288,7 @@ namespace VideotheekHofmanLaurens
                 ((TextBox)sender).SelectAll();
         }
         #endregion
+
+        
     }
 }
