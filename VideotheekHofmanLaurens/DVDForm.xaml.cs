@@ -59,9 +59,9 @@ namespace VideotheekHofmanLaurens
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (Validate())
+            try
             {
-                try
+                if (Validate())
                 {
                     if (BL_DVD.Save(Model))
                     {
@@ -69,11 +69,11 @@ namespace VideotheekHofmanLaurens
                             OnModelSaved(Model);
                     }
                 }
-                catch (Exception)
-                {
+            }
+            catch (Exception)
+            {
 
-                    throw;
-                }
+                throw;
             }
         }
 
@@ -269,26 +269,5 @@ namespace VideotheekHofmanLaurens
             }
            
         }
-        
-        /// <summary>
-        /// Selects all the text in the textbox when switched to with TAB for those with a standard 0 filled in
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        #region Selection on tab
-        private void txtStock_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            if (e.KeyboardDevice.IsKeyDown(Key.Tab))
-                ((TextBox)sender).SelectAll();
-        }
-
-        private void txtPrice_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            if (e.KeyboardDevice.IsKeyDown(Key.Tab))
-                ((TextBox)sender).SelectAll();
-        }
-        #endregion
-
-        
     }
 }

@@ -34,6 +34,22 @@ namespace VideotheekLibrary.Entities
         [Column("birth_date")]
         [Required(ErrorMessage = "A birth date is required")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
+
+        public string FullDetails
+        {
+            get
+            {
+                return $"{Surname} {FirstName} - {BirthDate.Value.ToString("dd/MM/yyyy")}".Trim();
+            }
+        }
+
+        public virtual ICollection<DVD> DVDs { get; set; }
+        
+        public Client()
+        {
+            DVDs = new List<DVD>();
+            BirthDate = null;
+        }
     }
 }

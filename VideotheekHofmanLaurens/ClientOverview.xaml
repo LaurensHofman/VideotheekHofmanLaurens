@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Background="White">
     <Grid>
-        <DataGrid Name="grdClientOverview" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single">
+        <DataGrid Name="grdClientOverview" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" RowEditEnding="grdClientOverview_RowEditEnding">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Surname}" Header="Surname" />
-                <DataGridTextColumn Binding="{Binding Path=FirstName}" Header="First Name" />
-                <DataGridTextColumn Binding="{Binding Path=BirthDate, StringFormat={}{0:dd/MM/yyyy}}" Header="Date of Birth" />
+                <DataGridTextColumn Binding="{Binding Path=Surname, UpdateSourceTrigger=PropertyChanged}" Header="Surname" />
+                <DataGridTextColumn Binding="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" Header="First Name" />
+                <DataGridTextColumn Binding="{Binding Path=BirthDate, StringFormat={}{0:dd/MM/yyyy}}" IsReadOnly="True" Header="Date of Birth" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -26,7 +26,6 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

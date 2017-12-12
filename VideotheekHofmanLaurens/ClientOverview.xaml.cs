@@ -80,6 +80,13 @@ namespace VideotheekHofmanLaurens
                 dataSource.Remove(obj);
             }
         }
-        
+
+        private void grdClientOverview_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            DataGridRow _dgRow = e.Row;
+            var _changedValue = _dgRow.DataContext as Client;
+
+            BL_Client.Save(_changedValue);
+        }
     }
 }

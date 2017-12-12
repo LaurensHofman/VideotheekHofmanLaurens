@@ -7,34 +7,45 @@
              xmlns:local="clr-namespace:VideotheekHofmanLaurens"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Background="White">
-    <Grid>
-        <DataGrid Name="grdDVDOverview" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single">
+   
+    <Grid x:Name="grdOverview">
+        <ComboBox x:Name="cmbxClientSelect" Height="30" VerticalAlignment="Top"
+                  ItemsSource="{Binding Path=collClient}"
+                  DisplayMemberPath="FullDetails"
+                  SelectedValuePath="ID" FontSize="16" Width="350" HorizontalAlignment="Left"/>
+        <DataGrid Name="grdDVDOverview" Margin="0,30,0,0" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" RowEditEnding="grdDVDOverview_RowEditEnding">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" />
-                <DataGridTextColumn Binding="{Binding Path=Description}" Width="*" Header="Description" />
-                <DataGridTextColumn Binding="{Binding Path=Director}" Header="Director" />
-                <DataGridTextColumn Binding="{Binding Path=Genres}" Header="Genres" />
-                <DataGridTextColumn Binding="{Binding Path=PEGIage}" Header="PEGI" />
-                <DataGridTextColumn Binding="{Binding Path=Stock}" Header="Current Stock" />
-                <DataGridTextColumn Binding="{Binding Path=Price}" Header="Price" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnReservation" Content="Reservation" Click="btnReservation_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Header="Name" />
+                <DataGridTextColumn Binding="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Description" />
+                <DataGridTextColumn Binding="{Binding Path=Director, UpdateSourceTrigger=PropertyChanged}" Header="Director" />
+                <DataGridTextColumn Binding="{Binding Path=Genres, UpdateSourceTrigger=PropertyChanged}" Header="Genres" />
+                <DataGridTextColumn Binding="{Binding Path=PEGIage, UpdateSourceTrigger=PropertyChanged}" Header="PEGI" />
+                <DataGridTextColumn Binding="{Binding Path=Stock, UpdateSourceTrigger=PropertyChanged}" Header="Current Stock" />
+                <DataGridTextColumn Binding="{Binding Path=Price, StringFormat=C2, ConverterCulture=nl-BE, UpdateSourceTrigger=PropertyChanged}" Header="Price" />
                 <DataGridTextColumn Binding="{Binding Path=DVDType}" Header="DVD Type" />
-                <DataGridTextColumn Binding="{Binding Path=MovieDuration}" Header="Duration (minutes)" />
-                <DataGridTextColumn Binding="{Binding Path=SeriesEpisodes}" Header="Episodes" />
+                <DataGridTextColumn Binding="{Binding Path=MovieDuration, UpdateSourceTrigger=PropertyChanged}" Header="Duration (minutes)" />
+                <DataGridTextColumn Binding="{Binding Path=SeriesEpisodes, UpdateSourceTrigger=PropertyChanged}" Header="Episodes" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="rbtnUpdateDVD" Content="Update" Click="rbtnUpdateDVD_Click"/>
+                            <Button x:Name="btnUpdateDVD" Content="Update" Click="btnUpdateDVD_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="rbtnDeleteDVD" Content="Delete" Click="rbtnDeleteDVD_Click"/>
+                            <Button x:Name="btnDeleteDVD" Content="Delete" Click="btnDeleteDVD_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

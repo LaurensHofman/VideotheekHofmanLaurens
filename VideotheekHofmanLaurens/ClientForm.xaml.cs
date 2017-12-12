@@ -52,6 +52,13 @@ namespace VideotheekHofmanLaurens
 
             this.Model = model;
 
+            if (model.BirthDate != null)
+            {
+                txtBirthDay.Text = (model.BirthDate.Value.Day < 10) ? "0" + model.BirthDate.Value.Day.ToString() : model.BirthDate.Value.Day.ToString();
+                txtBirthMonth.Text = (model.BirthDate.Value.Month < 10) ? "0" + model.BirthDate.Value.Month.ToString() : model.BirthDate.Value.Month.ToString();
+                txtBirthYear.Text = model.BirthDate.Value.Year.ToString();
+            }
+
             grdClientForm.DataContext = this;
 
             SetTitle();
@@ -75,21 +82,95 @@ namespace VideotheekHofmanLaurens
         {
             try
             {
-                string birthDate = $"{txtBirthDay.Text}/{txtBirthMonth.Text}/{txtBirthYear.Text}" ;
-                Model.BirthDate = Convert.ToDateTime(birthDate);
-
-                if (BL_Client.Save(Model))
+                if (Validate())
                 {
-                    if (OnModelSaved != null)
-                        OnModelSaved(Model);
+                    string birthDate = $"{txtBirthDay.Text}/{txtBirthMonth.Text}/{txtBirthYear.Text}";
+                    Model.BirthDate = Convert.ToDateTime(birthDate);
+
+                    if (BL_Client.Save(Model))
+                    {
+                        if (OnModelSaved != null)
+                            OnModelSaved(Model);
+                    }
                 }
-                MessageBox.Show("You saved");
             }
             catch (Exception)
             {
 
                 throw;
             }
+        }
+
+        private bool Validate()
+        {
+            bool validation = true;
+
+            #region Hides error labels
+
+            lblSurnameError.Visibility = Visibility.Collapsed;
+            lblFirstNameError.Visibility = Visibility.Collapsed;
+            lblBirthDateError.Visibility = Visibility.Collapsed;
+          
+            #endregion
+
+            #region Validates to avoid possible entity errors
+
+            #region Validates surname
+            if (string.IsNullOrWhiteSpace(Model.Surname))
+            {
+                lblSurnameError.Content = "Cannot be empty";
+                lblSurnameError.Visibility = Visibility.Visible;
+                validation = false;
+            }
+            else if (Model.Surname.Length > 255)
+            {
+                lblSurnameError.Content = "Cannot be longer than 255 characters";
+                lblSurnameError.Visibility = Visibility.Visible;
+                validation = false;
+            }
+            #endregion
+
+            #region Validates first name
+            if (string.IsNullOrWhiteSpace(Model.FirstName))
+            {
+                lblFirstNameError.Content = "Cannot be empty";
+                lblFirstNameError.Visibility = Visibility.Visible;
+                validation = false;
+            }
+            else if (Model.FirstName.Length > 255)
+            {
+                lblFirstNameError.Content = "Cannot be longer than 255 characters";
+                lblFirstNameError.Visibility = Visibility.Visible;
+                validation = false;
+            }
+            #endregion
+
+            #region Validates birth date
+
+            try
+            {
+                string birthDate = $"{txtBirthDay.Text}/{txtBirthMonth.Text}/{txtBirthYear.Text}";
+                Model.BirthDate = Convert.ToDateTime(birthDate);
+
+                if (Model.BirthDate >= DateTime.Now)
+                {
+                    lblBirthDateError.Visibility = Visibility.Visible;
+                    lblBirthDateError.Content = "Birth date cannot be in the future";
+                    validation = false;
+                }
+            }
+            catch (Exception)
+            {
+                lblBirthDateError.Visibility = Visibility.Visible;
+                lblBirthDateError.Content = "Enter a valid birthdate";
+                validation = false;
+            }
+            
+            #endregion
+
+            #endregion
+
+            return validation;
         }
     }
 }

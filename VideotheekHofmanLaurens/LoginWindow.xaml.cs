@@ -34,6 +34,18 @@ namespace VideotheekHofmanLaurens
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (Validate())
+            {
+                new NavigationWindow().Show();
+                newWindow = true;
+                this.Close();
+            }
+        }
+
+        private bool Validate()
+        {
+            bool validation = true;
+            
             lblEmptyPassword.Visibility = Visibility.Collapsed;
             lblEmptyUsername.Visibility = Visibility.Collapsed;
             lblWrongCredentials.Visibility = Visibility.Collapsed;
@@ -41,28 +53,28 @@ namespace VideotheekHofmanLaurens
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
                 lblEmptyUsername.Visibility = Visibility.Visible;
+                validation = false;
             }
+
             if (string.IsNullOrWhiteSpace(pwdPassword.Password))
             {
                 lblEmptyPassword.Visibility = Visibility.Visible;
-            }
-            if (txtUsername.Text.ToLower() != "admin" &&
-                pwdPassword.Password != "admin" &&
-                !string.IsNullOrWhiteSpace(pwdPassword.Password) &&
-                !string.IsNullOrWhiteSpace(txtUsername.Text))
-            {
-                lblWrongCredentials.Visibility = Visibility.Visible;
+                validation = false;
             }
 
-            if (txtUsername.Text.ToLower() == "admin" &&
-                pwdPassword.Password == "admin")
+            if (   
+                (!string.IsNullOrWhiteSpace(txtUsername.Text) && !string.IsNullOrWhiteSpace(pwdPassword.Password)) 
+                &&
+                (pwdPassword.Password != "admin" || txtUsername.Text.ToLower() != "admin") 
+               )
             {
-                new NavigationWindow().Show();
-                newWindow = true;
-                this.Close();
+                lblWrongCredentials.Visibility = Visibility.Visible;
+                validation = false;
             }
 
             pwdPassword.Password = "";
+
+            return validation;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -97,6 +109,7 @@ namespace VideotheekHofmanLaurens
                 showPassword = true;
             else
                 showPassword = false;
+
 
             ToggleShowPassword();
         }
@@ -133,7 +146,6 @@ namespace VideotheekHofmanLaurens
             int length = 0;
             pwdPassword.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic)
                     .Invoke(pwdPassword, new object[] { start, length });
-
         }
         
     }

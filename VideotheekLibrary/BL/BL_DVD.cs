@@ -81,5 +81,10 @@ namespace VideotheekLibrary.BL
                 throw;
             }
         }
+
+        public static string GetDetails(int dvdID)
+        {
+            return DAL_DVD.GetDetails(dvdID);
+        }
     }
 }

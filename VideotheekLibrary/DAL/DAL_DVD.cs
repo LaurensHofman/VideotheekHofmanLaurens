@@ -17,6 +17,7 @@ namespace VideotheekLibrary.DAL
 
             return ctx.DVDs
                 .Where(dvd => dvd.DeletedAt == null)
+                .OrderBy(d => d.Name)
                 .ToList();
         }
 
@@ -34,6 +35,15 @@ namespace VideotheekLibrary.DAL
 
             ctx.Entry(model).State = EntityState.Modified;
             ctx.SaveChanges();
+        }
+
+        public static string GetDetails(int dvdID)
+        {
+            var ctx = AppDbContext.Instance();
+
+            var det = ctx.DVDs.SingleOrDefault(c => c.ID == dvdID);
+            return det.Details;
+
         }
     }
 }

@@ -23,6 +23,20 @@ namespace VideotheekLibrary.BL
             }
         }
 
+        public static string GetFullDetails(int clientID)
+        {
+            try
+            {
+                return DAL_Client.GetFullDetails(clientID);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
         public static bool Save(Client model)
         {
             try

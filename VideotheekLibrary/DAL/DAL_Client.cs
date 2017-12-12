@@ -17,7 +17,19 @@ namespace VideotheekLibrary.DAL
 
             return ctx.Clients
                 .Where(c => c.DeletedAt == null)
+                .OrderBy(c => c.Surname)
+                .ThenBy(c => c.FirstName)
+                .ThenBy(c => c.BirthDate)
                 .ToList();
+        }
+
+        public static string GetFullDetails(int clientID)
+        {
+            var ctx = AppDbContext.Instance();
+
+            var det = ctx.Clients.SingleOrDefault(c => c.ID == clientID);
+            return det.FullDetails;
+
         }
 
         public static void Create(Client model)

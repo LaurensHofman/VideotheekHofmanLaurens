@@ -105,6 +105,8 @@ namespace VideotheekHofmanLaurens
         #region Client Form and Overview
         private void rbtnAddClients_Click(object sender, RoutedEventArgs e)
         {
+            SetTitleByRibbonButton(sender);
+
             var _form = new ClientForm();
             _form.OnModelSaved += ClientForm_OnModelSaved;
 
@@ -136,8 +138,14 @@ namespace VideotheekHofmanLaurens
             rbtnClientOverview_Click(rbtnClientOverview, null);
         }
 
+
         #endregion
 
+        private void rbtnOverviewReservation_Click(object sender, RoutedEventArgs e)
+        {
+            SetTitleByRibbonButton(sender);
 
+            mainControl.Content = new ReservationOverview();
+        }
     }
 }

@@ -30,6 +30,10 @@ namespace VideotheekHofmanLaurens
 
         private readonly AppDbContext context;
 
+        public Reservation ResModel { get; set; }
+        public ObservableCollection<Client> collClient { get; set; }
+        public ObservableCollection<DVD> dataSource { get; set; }
+
         public DVDOverview()
         {
             InitializeComponent();
@@ -37,19 +41,20 @@ namespace VideotheekHofmanLaurens
             BindData();
         }
 
-        private ObservableCollection<DVD> dataSource { get; set; }
-
         private void BindData()
         {
             dataSource = new ObservableCollection<DVD>(BL_DVD.GetAll());
             dataSource.CollectionChanged += DataSourceChanged;
             grdDVDOverview.ItemsSource = dataSource;
             grdDVDOverview.DataContext = dataSource;
+
+            collClient = new ObservableCollection<Client>(BL_Client.GetAll());
+            cmbxClientSelect.ItemsSource = collClient;
         }
 
         private void DataSourceChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-          switch (e.Action)
+            switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
                     foreach (DVD d in e.NewItems)
@@ -63,7 +68,7 @@ namespace VideotheekHofmanLaurens
             }
         }
 
-        private void rbtnUpdateDVD_Click(object sender, RoutedEventArgs e)
+        private void btnUpdateDVD_Click(object sender, RoutedEventArgs e)
         {
             var obj = ((FrameworkElement)sender).DataContext as DVD;
 
@@ -71,7 +76,7 @@ namespace VideotheekHofmanLaurens
                 OnUpdateDVD(obj);
         }
 
-        private void rbtnDeleteDVD_Click(object sender, RoutedEventArgs e)
+        private void btnDeleteDVD_Click(object sender, RoutedEventArgs e)
         {
             var obj = ((FrameworkElement)sender).DataContext as DVD;
 
@@ -79,6 +84,28 @@ namespace VideotheekHofmanLaurens
             {
                 dataSource.Remove(obj);
             }
+        }
+
+        private void grdDVDOverview_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            DataGridRow _dgRow = e.Row;
+            var _changedValue = _dgRow.DataContext as DVD;
+
+            BL_DVD.Save(_changedValue);
+        }
+
+        private void btnReservation_Click(object sender, RoutedEventArgs e)
+        {
+            var obj = ((FrameworkElement)sender).DataContext as DVD;
+            ResModel = new Reservation();
+
+            ResModel.ResDVDID = obj.ID;
+            ResModel.DVDDetails = BL_DVD.GetDetails(ResModel.ResDVDID);
+
+            ResModel.ResClientID = int.Parse(cmbxClientSelect.SelectedValue.ToString());
+            ResModel.ClientFullDetails = BL_Client.GetFullDetails(ResModel.ResClientID);
+
+            BL_Reservation.Create(ResModel);
         }
     }
 }
