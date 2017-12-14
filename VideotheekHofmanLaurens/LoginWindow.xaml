@@ -33,9 +33,5 @@
 
         <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Height="25" Margin="250,320,0,0" VerticalAlignment="Top" Width="80" Click="btnExit_Click" Background="#FFFFCC86" BorderBrush="{x:Null}"/>
         <Button x:Name="btnLogin" IsDefault="True" Content="Login" HorizontalAlignment="Left" Height="25" Margin="370,320,0,0" VerticalAlignment="Top" Width="80" Click="btnLogin_Click" Background="#FFFFCC86" BorderBrush="{x:Null}"/>
-        
-
-
-
-    </Grid>
+        </Grid>
 </Window>

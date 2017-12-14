@@ -82,17 +82,9 @@ namespace VideotheekLibrary.BL
             }
         }
 
-        public static int? GetOldStock(int? dvdID)
+        public static List<DVD> Filter(string search, string filter)
         {
-            try
-            {
-                return DAL_DVD.GetOldStock(dvdID);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return DAL_DVD.Filter(search, filter);
         }
     }
 }

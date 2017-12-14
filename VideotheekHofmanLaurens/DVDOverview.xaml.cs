@@ -87,7 +87,7 @@ namespace VideotheekHofmanLaurens
             DataGridRow _dgRow = e.Row;
             var _changedValue = _dgRow.DataContext as DVD;
 
-            lblStockError.Content = "";
+            lblError.Content = "";
             
             if(_changedValue.Stock >= _changedValue.ReservedAmount)
             {
@@ -96,9 +96,9 @@ namespace VideotheekHofmanLaurens
             }
             else
             {
-                var test = BL_DVD.GetOldStock(_changedValue.ID);
-                MessageBox.Show(test.ToString());
-                lblStockError.Content = $"Stock from ({_changedValue.Name}) cannot be lower than the current Reserved Amount.";
+                _changedValue.Stock = _changedValue.ReservedAmount;
+                BindData();
+                lblError.Content = $"Stock from ({_changedValue.Name}) cannot be lower than the current Reserved Amount.";
             }
         }
 
@@ -106,7 +106,7 @@ namespace VideotheekHofmanLaurens
         {
             var obj = ((FrameworkElement)sender).DataContext as DVD;
 
-            lblStockError.Content = "";
+            lblError.Content = "";
 
             if(obj.ReservedAmount <= obj.Stock - 1)
             {
@@ -116,13 +116,66 @@ namespace VideotheekHofmanLaurens
             }
             else
             {
-                lblStockError.Content = $"No available DVD's ({obj.Name}) for new reservations.";
+                lblError.Content = $"No available DVD's ({obj.Name}) for new reservations.";
             }
         }
 
         private void btnShowDescription_Click(object sender, RoutedEventArgs e)
         {
+            grdDVDOverview.RowDetailsVisibilityMode = 
+                (grdDVDOverview.RowDetailsVisibilityMode == DataGridRowDetailsVisibilityMode.Collapsed) ? 
+                DataGridRowDetailsVisibilityMode.VisibleWhenSelected : DataGridRowDetailsVisibilityMode.Collapsed;
+            
+        }
 
+        private void btnReceiveDVD_Click(object sender, RoutedEventArgs e)
+        {
+            var obj = ((FrameworkElement)sender).DataContext as DVD;
+
+            lblError.Content = "";
+
+            if (obj.ReservedAmount >= 1)
+            {
+                obj.ReservedAmount -= 1;
+                BL_DVD.Save(obj);
+                BindData();
+            }
+            else
+            {
+                lblError.Content = $"No reserved DVD's ({obj.Name}) left to receive.";
+            }
+        }
+
+        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        {
+            lblError.Content = "";
+
+            if (!string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                if (cmbxFilter.SelectedValue.ToString() == "-- Select Filter --")
+                {
+                    lblError.Content = "Please select a filter";
+                }
+                else
+                {
+                    dataSource = new ObservableCollection<DVD>(BL_DVD.Filter(txtSearch.Text, cmbxFilter.SelectedValue.ToString()));
+
+                    grdDVDOverview.ItemsSource = dataSource;
+                    grdDVDOverview.DataContext = dataSource;
+                }
+            }
+            else
+            {
+                lblError.Content = "Please enter text to filter";
+            }
+            
+        }
+
+        private void btnResetFilter_Click(object sender, RoutedEventArgs e)
+        {
+            cmbxFilter.SelectedIndex = 0;
+            txtSearch.Text = "";
+            BindData();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace VideotheekLibrary.DAL
 
             return ctx.DVDs
                 .Where(dvd => dvd.DeletedAt == null)
-                .OrderBy(d => d.Name)
+                .OrderBy(dvd => dvd.Name)
                 .ToList();
         }
 
@@ -37,11 +37,41 @@ namespace VideotheekLibrary.DAL
             ctx.SaveChanges();
         }
 
-        public static int? GetOldStock(int? dvdID)
+        public static List<DVD> Filter(string search, string filter)
         {
             var ctx = AppDbContext.Instance();
+            
+            switch (filter)
+            {
+                case "Name":
+                    return ctx.DVDs
+                                .Where(dvd => dvd.Name.Contains(search) && dvd.DeletedAt == null)
+                                .OrderBy(dvd => dvd.Name)
+                                .ToList();
+                    break;
 
-            return ctx.DVDs.SingleOrDefault(dvd => dvd.ID == dvdID).Stock;
+                case "Director":
+                    return ctx.DVDs
+                                .Where(dvd => dvd.Director.Contains(search) && dvd.DeletedAt == null)
+                                .OrderBy(dvd => dvd.Director)
+                                .ToList();
+                    break;
+
+                case "Genres":
+                    return ctx.DVDs
+                                .Where(dvd => dvd.Genres.Contains(search) && dvd.DeletedAt == null)
+                                .OrderBy(dvd => dvd.Genres)
+                                .ToList();
+                    break;
+
+                default:
+                    return ctx.DVDs
+                                .Where(dvd => dvd.DeletedAt == null)
+                                .OrderBy(dvd => dvd.Name)
+                                .ToList();
+            }
+
+            
         }
     }
 }

@@ -5,17 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideotheekHofmanLaurens"
         mc:Ignorable="d"
-        Title="VideotheekHofmanLaurens" Height="350" Width="525" WindowState="Maximized" Closing="Window_Closing" Icon="Resources/Icons/64cassette_88Z_icon.ico" >
+        Title="VideotheekHofmanLaurens" Height="900" Width="1400" WindowState="Maximized" Closing="Window_Closing" Icon="Resources/Icons/64cassette_88Z_icon.ico" >
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/Images/CinemaCurtainsOpen.jpg" Stretch="UniformToFill" Opacity="0.9"/>
+    </Window.Background>
     <Grid x:Name="grdNavigationWindow">
-        <ContentControl x:Name="mainControl" Margin="10,150,10,10"/>
-        <Ribbon Height="145" VerticalAlignment="Top" Margin="0,0,0.4,0">
+
+        <Label x:Name="lblExitProgram" Margin="0,0,29.6,10.4" FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Content="Exit program" HorizontalContentAlignment="Center" Width="152"/>
+        <Button x:Name="btnExitProgram" Click="ramiExit_Click" Margin="0,0,50,50" BorderBrush="{x:Null}" HorizontalAlignment="Right" Width="112" Height="108" VerticalAlignment="Bottom">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="Resources/Icons/DoorCloserWhite512.png" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="Resources/Icons/DoorOpenWhite512.png" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <ContentControl x:Name="mainControl"  Margin="0,135,0,0">
+        </ContentControl>
+        <Ribbon Height="145" VerticalAlignment="Top" Margin="0,0,0.4,0" Background="#E5635232">
             <Ribbon.ApplicationMenu>
-                <RibbonApplicationMenu KeyTip="M">
+                <RibbonApplicationMenu KeyTip="M" Background="#E5635232" >
                     <RibbonApplicationMenuItem x:Name="ramiExit" Header="Exit program" ImageSource="Resources/Icons/64Exit.png" Click="ramiExit_Click" />
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Home" KeyTip="H">
-                <RibbonGroup Header="DVD's">
+                <RibbonGroup Header="DVD's" Foreground="Black">
                     <RibbonButton x:Name="rbtnAddDVD"  Label=" Add new DVD" Click="rbtnAddDVD_Click" SmallImageSource="Resources/Icons/64DVDAdd.png" />
                     <RibbonButton x:Name="rbtnOverviewDVD" SmallImageSource="Resources/Icons/64DVDOverview.png" Label=" DVD Overview" Click="rbtnOverviewDVD_Click"/>
                 </RibbonGroup>
