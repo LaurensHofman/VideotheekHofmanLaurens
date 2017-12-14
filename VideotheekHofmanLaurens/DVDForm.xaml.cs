@@ -39,8 +39,6 @@ namespace VideotheekHofmanLaurens
             grdDVDForm.DataContext = this;
 
             SetTitle();
-
-            
         }
 
         private void SetTitle()
@@ -137,28 +135,37 @@ namespace VideotheekHofmanLaurens
                 lblStockError.Visibility = Visibility.Visible;
                 validation = false;
             }
+            if (Model.Stock < Model.ReservedAmount)
+            {
+                lblStockError.Content = $"Cannot be lower than the reserved amount ({Model.ReservedAmount})";
+                lblStockError.Visibility = Visibility.Visible;
+                validation = false;                   
+            }
             #endregion
 
             #region Validates Price
-            if (string.IsNullOrWhiteSpace(txtPrice.Text))
+            double priceresult = 0;
+            string priceText = txtPrice.Text.Replace("€", "").Replace(" ", "").Replace(".","") ;
+
+            if (string.IsNullOrWhiteSpace(priceText))
             {
                 lblPriceError.Content = "Cannot be empty";
                 lblPriceError.Visibility = Visibility.Visible;
                 validation = false;
             }
-            else if (!Decimal.TryParse(txtPrice.Text, out decimal result))
+            else if (!double.TryParse(priceText, out priceresult))
             {
                 lblPriceError.Content = "Has to be a valid number";
                 lblPriceError.Visibility = Visibility.Visible;
                 validation = false;
             }
-            else if (Model.Price < (decimal)0.00)
+            else if (Model.Price < 0)
             {
                 lblPriceError.Content = "Cannot be below € 0.00";
                 lblPriceError.Visibility = Visibility.Visible;
                 validation = false;
             }
-            else if (Model.Price > (decimal)99999.00)
+            else if (Model.Price > 99999)
             {
                 lblPriceError.Content = "Cannot be over € 99999.00";
                 lblPriceError.Visibility = Visibility.Visible;
@@ -269,5 +276,7 @@ namespace VideotheekHofmanLaurens
             }
            
         }
+
+       
     }
 }

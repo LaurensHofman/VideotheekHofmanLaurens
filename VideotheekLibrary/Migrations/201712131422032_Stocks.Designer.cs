@@ -7,13 +7,13 @@ namespace VideotheekLibrary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class NullableInt : IMigrationMetadata
+    public sealed partial class Stocks : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NullableInt));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Stocks));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712081317253_NullableInt"; }
+            get { return "201712131422032_Stocks"; }
         }
         
         string IMigrationMetadata.Source

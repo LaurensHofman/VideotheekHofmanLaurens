@@ -18,11 +18,6 @@
                 <RibbonGroup Header="DVD's">
                     <RibbonButton x:Name="rbtnAddDVD"  Label=" Add new DVD" Click="rbtnAddDVD_Click" SmallImageSource="Resources/Icons/64DVDAdd.png" />
                     <RibbonButton x:Name="rbtnOverviewDVD" SmallImageSource="Resources/Icons/64DVDOverview.png" Label=" DVD Overview" Click="rbtnOverviewDVD_Click"/>
-                    <RibbonButton x:Name="rbtnOverviewReservation" Label="Reservation Overview" Click="rbtnOverviewReservation_Click"/>
-                </RibbonGroup>
-                <RibbonGroup Header="Clients">
-                    <RibbonButton x:Name="rbtnAddClients"  Label=" Add new client" SmallImageSource="Resources/Icons/64PersonAdd.png" Click="rbtnAddClients_Click" />
-                    <RibbonButton x:Name="rbtnClientOverview" SmallImageSource="Resources/Icons/64GroupPeople.png" Label=" Client Overview" Click="rbtnClientOverview_Click"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

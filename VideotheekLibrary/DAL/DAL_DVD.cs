@@ -37,13 +37,11 @@ namespace VideotheekLibrary.DAL
             ctx.SaveChanges();
         }
 
-        public static string GetDetails(int dvdID)
+        public static int? GetOldStock(int? dvdID)
         {
             var ctx = AppDbContext.Instance();
 
-            var det = ctx.DVDs.SingleOrDefault(c => c.ID == dvdID);
-            return det.Details;
-
+            return ctx.DVDs.SingleOrDefault(dvd => dvd.ID == dvdID).Stock;
         }
     }
 }

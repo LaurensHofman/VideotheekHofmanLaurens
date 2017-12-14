@@ -68,84 +68,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\BL_Client.cs" />
     <Compile Include="BL\BL_DVD.cs" />
-    <Compile Include="BL\BL_Reservation.cs" />
-    <Compile Include="DAL\DAL_Client.cs" />
     <Compile Include="DAL\DAL_DVD.cs" />
-    <Compile Include="DAL\DAL_Reservation.cs" />
     <Compile Include="Data\AppDbContext.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\DVD.cs" />
-    <Compile Include="Entities\Reservation.cs" />
-    <Compile Include="Migrations\201711251942288_Start.cs" />
-    <Compile Include="Migrations\201711251942288_Start.Designer.cs">
-      <DependentUpon>201711251942288_Start.cs</DependentUpon>
+    <Compile Include="Migrations\201712131422032_Stocks.cs" />
+    <Compile Include="Migrations\201712131422032_Stocks.Designer.cs">
+      <DependentUpon>201712131422032_Stocks.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711251959003_deletednull.cs" />
-    <Compile Include="Migrations\201711251959003_deletednull.Designer.cs">
-      <DependentUpon>201711251959003_deletednull.cs</DependentUpon>
+    <Compile Include="Migrations\201712131431502_StocksInt.cs" />
+    <Compile Include="Migrations\201712131431502_StocksInt.Designer.cs">
+      <DependentUpon>201712131431502_StocksInt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711252018253_intEpisodes.cs" />
-    <Compile Include="Migrations\201711252018253_intEpisodes.Designer.cs">
-      <DependentUpon>201711252018253_intEpisodes.cs</DependentUpon>
+    <Compile Include="Migrations\201712131511383_calculationstock.cs" />
+    <Compile Include="Migrations\201712131511383_calculationstock.Designer.cs">
+      <DependentUpon>201712131511383_calculationstock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711270816181_PricePerDAY.cs" />
-    <Compile Include="Migrations\201711270816181_PricePerDAY.Designer.cs">
-      <DependentUpon>201711270816181_PricePerDAY.cs</DependentUpon>
+    <Compile Include="Migrations\201712131919599_yt.cs" />
+    <Compile Include="Migrations\201712131919599_yt.Designer.cs">
+      <DependentUpon>201712131919599_yt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712041101222_Price.cs" />
-    <Compile Include="Migrations\201712041101222_Price.Designer.cs">
-      <DependentUpon>201712041101222_Price.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712081241431_Client2.cs" />
-    <Compile Include="Migrations\201712081241431_Client2.Designer.cs">
-      <DependentUpon>201712081241431_Client2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712081317253_NullableInt.cs" />
-    <Compile Include="Migrations\201712081317253_NullableInt.Designer.cs">
-      <DependentUpon>201712081317253_NullableInt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712110920122_Reservations.cs" />
-    <Compile Include="Migrations\201712110920122_Reservations.Designer.cs">
-      <DependentUpon>201712110920122_Reservations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712111648344_KeysReservation.cs" />
-    <Compile Include="Migrations\201712111648344_KeysReservation.Designer.cs">
-      <DependentUpon>201712111648344_KeysReservation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121416179_NoOnModelCreating.cs" />
-    <Compile Include="Migrations\201712121416179_NoOnModelCreating.Designer.cs">
-      <DependentUpon>201712121416179_NoOnModelCreating.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121438550_WorkingReservations.cs" />
-    <Compile Include="Migrations\201712121438550_WorkingReservations.Designer.cs">
-      <DependentUpon>201712121438550_WorkingReservations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121441239_testRefkey.cs" />
-    <Compile Include="Migrations\201712121441239_testRefkey.Designer.cs">
-      <DependentUpon>201712121441239_testRefkey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121446388_IDReservation.cs" />
-    <Compile Include="Migrations\201712121446388_IDReservation.Designer.cs">
-      <DependentUpon>201712121446388_IDReservation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121447426_IDReservation_res.cs" />
-    <Compile Include="Migrations\201712121447426_IDReservation_res.Designer.cs">
-      <DependentUpon>201712121447426_IDReservation_res.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121506131_ClientFullDetReservation.cs" />
-    <Compile Include="Migrations\201712121506131_ClientFullDetReservation.Designer.cs">
-      <DependentUpon>201712121506131_ClientFullDetReservation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121516013_GetFullClientsDetailsBLClient.cs" />
-    <Compile Include="Migrations\201712121516013_GetFullClientsDetailsBLClient.Designer.cs">
-      <DependentUpon>201712121516013_GetFullClientsDetailsBLClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121819449_ResDVDDetails.cs" />
-    <Compile Include="Migrations\201712121819449_ResDVDDetails.Designer.cs">
-      <DependentUpon>201712121819449_ResDVDDetails.cs</DependentUpon>
+    <Compile Include="Migrations\201712132021321_noYT.cs" />
+    <Compile Include="Migrations\201712132021321_noYT.Designer.cs">
+      <DependentUpon>201712132021321_noYT.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,67 +101,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711251942288_Start.resx">
-      <DependentUpon>201711251942288_Start.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Migrations\201712131422032_Stocks.resx">
+      <DependentUpon>201712131422032_Stocks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711251959003_deletednull.resx">
-      <DependentUpon>201711251959003_deletednull.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Migrations\201712131431502_StocksInt.resx">
+      <DependentUpon>201712131431502_StocksInt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711252018253_intEpisodes.resx">
-      <DependentUpon>201711252018253_intEpisodes.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Migrations\201712131511383_calculationstock.resx">
+      <DependentUpon>201712131511383_calculationstock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711270816181_PricePerDAY.resx">
-      <DependentUpon>201711270816181_PricePerDAY.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Migrations\201712131919599_yt.resx">
+      <DependentUpon>201712131919599_yt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712041101222_Price.resx">
-      <DependentUpon>201712041101222_Price.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Migrations\201712132021321_noYT.resx">
+      <DependentUpon>201712132021321_noYT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712081241431_Client2.resx">
-      <DependentUpon>201712081241431_Client2.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712081317253_NullableInt.resx">
-      <DependentUpon>201712081317253_NullableInt.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712110920122_Reservations.resx">
-      <DependentUpon>201712110920122_Reservations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712111648344_KeysReservation.resx">
-      <DependentUpon>201712111648344_KeysReservation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121416179_NoOnModelCreating.resx">
-      <DependentUpon>201712121416179_NoOnModelCreating.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121438550_WorkingReservations.resx">
-      <DependentUpon>201712121438550_WorkingReservations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121441239_testRefkey.resx">
-      <DependentUpon>201712121441239_testRefkey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121446388_IDReservation.resx">
-      <DependentUpon>201712121446388_IDReservation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121447426_IDReservation_res.resx">
-      <DependentUpon>201712121447426_IDReservation_res.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121506131_ClientFullDetReservation.resx">
-      <DependentUpon>201712121506131_ClientFullDetReservation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121516013_GetFullClientsDetailsBLClient.resx">
-      <DependentUpon>201712121516013_GetFullClientsDetailsBLClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121819449_ResDVDDetails.resx">
-      <DependentUpon>201712121819449_ResDVDDetails.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

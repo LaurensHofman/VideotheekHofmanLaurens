@@ -32,12 +32,28 @@ namespace VideotheekLibrary.Entities
         [Range(0, 99999, ErrorMessage = "The stock cannot be lower than 0")]
         public int? Stock { get; set; }
 
+        //[Column("available_stock")]
+        public int? AvailableStock
+        {
+            get
+            {
+                return Stock - ReservedAmount;
+            }
+        }
+
+        [Column("reserved_amount")]
+        public int? ReservedAmount { get; set; }
+
+        public DVD()
+        {
+            ReservedAmount = 0;
+        }
+        
         [Column("price")]
         [Required(ErrorMessage = "A price per day is required")]
-        [Range(0.00, 99999, ErrorMessage = "A price must be greater than € 0.00")]
-        [DisplayFormat(DataFormatString = "{0:0, 0.00}")]
+        [Range(0.00, 99999, ErrorMessage = "A price must be greater than € 0,00")]
         [DisplayName("Price (€)")]
-        public Decimal? Price{ get; set; }
+        public Decimal? Price { get; set; }
 
         [Column("director")]
         public string Director { get; set; }
@@ -62,19 +78,5 @@ namespace VideotheekLibrary.Entities
         [Range(0, 99999, ErrorMessage = "The amount of episodes has to be at least 0")]
         public int? SeriesEpisodes { get; set; }
 
-        public virtual ICollection<Client> Clients { get; set; }
-        
-        public DVD()
-        {
-            Clients = new List<Client>();
-        }
-
-        public string Details
-        {
-            get
-            {
-                return $"{Name} - {Price} - {Director} - {DVDType}".Trim();
-            }
-        }
     }
 }

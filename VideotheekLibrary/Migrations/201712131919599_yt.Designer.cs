@@ -7,13 +7,13 @@ namespace VideotheekLibrary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class NoOnModelCreating : IMigrationMetadata
+    public sealed partial class yt : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NoOnModelCreating));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(yt));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712121416179_NoOnModelCreating"; }
+            get { return "201712131919599_yt"; }
         }
         
         string IMigrationMetadata.Source

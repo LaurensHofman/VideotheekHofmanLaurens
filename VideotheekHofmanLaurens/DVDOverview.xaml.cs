@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +30,7 @@ namespace VideotheekHofmanLaurens
         public event UpdateDVD OnUpdateDVD;
 
         private readonly AppDbContext context;
-
-        public Reservation ResModel { get; set; }
-        public ObservableCollection<Client> collClient { get; set; }
+        
         public ObservableCollection<DVD> dataSource { get; set; }
 
         public DVDOverview()
@@ -47,9 +46,6 @@ namespace VideotheekHofmanLaurens
             dataSource.CollectionChanged += DataSourceChanged;
             grdDVDOverview.ItemsSource = dataSource;
             grdDVDOverview.DataContext = dataSource;
-
-            collClient = new ObservableCollection<Client>(BL_Client.GetAll());
-            cmbxClientSelect.ItemsSource = collClient;
         }
 
         private void DataSourceChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -91,21 +87,42 @@ namespace VideotheekHofmanLaurens
             DataGridRow _dgRow = e.Row;
             var _changedValue = _dgRow.DataContext as DVD;
 
-            BL_DVD.Save(_changedValue);
+            lblStockError.Content = "";
+            
+            if(_changedValue.Stock >= _changedValue.ReservedAmount)
+            {
+                BL_DVD.Save(_changedValue);
+                BindData();
+            }
+            else
+            {
+                var test = BL_DVD.GetOldStock(_changedValue.ID);
+                MessageBox.Show(test.ToString());
+                lblStockError.Content = $"Stock from ({_changedValue.Name}) cannot be lower than the current Reserved Amount.";
+            }
         }
 
         private void btnReservation_Click(object sender, RoutedEventArgs e)
         {
             var obj = ((FrameworkElement)sender).DataContext as DVD;
-            ResModel = new Reservation();
 
-            ResModel.ResDVDID = obj.ID;
-            ResModel.DVDDetails = BL_DVD.GetDetails(ResModel.ResDVDID);
+            lblStockError.Content = "";
 
-            ResModel.ResClientID = int.Parse(cmbxClientSelect.SelectedValue.ToString());
-            ResModel.ClientFullDetails = BL_Client.GetFullDetails(ResModel.ResClientID);
+            if(obj.ReservedAmount <= obj.Stock - 1)
+            {
+                obj.ReservedAmount += 1;
+                BL_DVD.Save(obj);
+                BindData();
+            }
+            else
+            {
+                lblStockError.Content = $"No available DVD's ({obj.Name}) for new reservations.";
+            }
+        }
 
-            BL_Reservation.Create(ResModel);
+        private void btnShowDescription_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -103,17 +103,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ReservationOverview.xaml.cs">
-      <DependentUpon>ReservationOverview.xaml</DependentUpon>
-    </Compile>
-    <Page Include="ClientForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ClientOverview.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DVDForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,12 +123,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ClientForm.xaml.cs">
-      <DependentUpon>ClientForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ClientOverview.xaml.cs">
-      <DependentUpon>ClientOverview.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DVDForm.xaml.cs">
       <DependentUpon>DVDForm.xaml</DependentUpon>
     </Compile>
@@ -153,10 +136,6 @@
       <DependentUpon>NavigationWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ReservationOverview.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

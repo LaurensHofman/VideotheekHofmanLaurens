@@ -7,13 +7,13 @@ namespace VideotheekLibrary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ClientFullDetReservation : IMigrationMetadata
+    public sealed partial class calculationstock : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ClientFullDetReservation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(calculationstock));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712121506131_ClientFullDetReservation"; }
+            get { return "201712131511383_calculationstock"; }
         }
         
         string IMigrationMetadata.Source

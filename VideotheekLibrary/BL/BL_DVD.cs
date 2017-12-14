@@ -82,9 +82,17 @@ namespace VideotheekLibrary.BL
             }
         }
 
-        public static string GetDetails(int dvdID)
+        public static int? GetOldStock(int? dvdID)
         {
-            return DAL_DVD.GetDetails(dvdID);
+            try
+            {
+                return DAL_DVD.GetOldStock(dvdID);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

@@ -17,10 +17,6 @@ namespace VideotheekLibrary.Data
 
         public DbSet<DVD> DVDs { get; set; }
 
-        public DbSet<Client> Clients { get; set; }
-
-        public DbSet<Reservation> Reservations { get; set; }
-
         #endregion
 
         public AppDbContext() : base(@"Data Source=DESKTOP-QJLP9GV\LAURENSSQL;Initial Catalog=VideotheekHofmanLaurens;Persist Security Info=True;User ID=VideotheekHofmanLaurens;Password=hofmanlaurens")
