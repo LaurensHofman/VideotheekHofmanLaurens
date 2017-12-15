@@ -45,8 +45,8 @@
                 <DataGridTextColumn Binding="{Binding Path=PEGIage, UpdateSourceTrigger=PropertyChanged}" Header="PEGI" />
                 <DataGridTextColumn Binding="{Binding Path=Price, StringFormat=C2, ConverterCulture=nl-BE, UpdateSourceTrigger=PropertyChanged}" Header="Price" />
                 <DataGridTextColumn Binding="{Binding Path=DVDType}" IsReadOnly="True" Header="DVD Type" />
-                <DataGridTextColumn Binding="{Binding Path=MovieDuration, UpdateSourceTrigger=PropertyChanged}" Header="Duration (minutes)" />
-                <DataGridTextColumn Binding="{Binding Path=SeriesEpisodes, UpdateSourceTrigger=PropertyChanged}" Header="Episodes" />
+                <DataGridTextColumn Binding="{Binding Path=MovieDuration}" IsReadOnly="True" Header="Duration (minutes)" />
+                <DataGridTextColumn Binding="{Binding Path=SeriesEpisodes}" IsReadOnly="True" Header="Episodes" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

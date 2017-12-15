@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="VideotheekHofmanLaurens" Height="900" Width="1400" WindowState="Maximized" Closing="Window_Closing" Icon="Resources/Icons/64cassette_88Z_icon.ico" >
     <Window.Background>
-        <ImageBrush ImageSource="Resources/Images/CinemaCurtainsOpen.jpg" Stretch="UniformToFill" Opacity="0.9"/>
+        <ImageBrush ImageSource="Resources/Images/CinemaCurtainsOpen.jpg" Stretch="UniformToFill" Opacity="0.8"/>
     </Window.Background>
     <Grid x:Name="grdNavigationWindow">
 
@@ -47,6 +47,7 @@
 
         <ContentControl x:Name="mainControl"  Margin="0,135,0,0">
         </ContentControl>
+        
         <Ribbon Height="145" VerticalAlignment="Top" Margin="0,0,0.4,0" Background="#E5635232">
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu KeyTip="M" Background="#E5635232" >
@@ -55,7 +56,7 @@
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Home" KeyTip="H">
                 <RibbonGroup Header="DVD's" Foreground="Black">
-                    <RibbonButton x:Name="rbtnAddDVD"  Label=" Add new DVD" Click="rbtnAddDVD_Click" SmallImageSource="Resources/Icons/64DVDAdd.png" />
+                    <RibbonButton x:Name="rbtnAddDVD"  Label=" Add new DVD" Click="rbtnAddDVD_Click" SmallImageSource="Resources/Icons/64DVDAdd.png"/>
                     <RibbonButton x:Name="rbtnOverviewDVD" SmallImageSource="Resources/Icons/64DVDOverview.png" Label=" DVD Overview" Click="rbtnOverviewDVD_Click"/>
                 </RibbonGroup>
             </RibbonTab>

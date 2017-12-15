@@ -172,9 +172,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Video.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Icons\16iconEye.png" />
   </ItemGroup>
   <ItemGroup>
@@ -194,10 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\64DVDAdd.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icons\64GroupPeople.png" />
-    <Resource Include="Resources\Icons\64PersonAdd.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

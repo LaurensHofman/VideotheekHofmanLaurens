@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace VideotheekLibrary.Entities
 {
-    [Table("DVDs")]
+    /// <summary>
+    /// Contains the generic information, that could be used by multiple entities.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class BaseEntity<T>
     {
         /// <summary>
@@ -25,7 +28,7 @@ namespace VideotheekLibrary.Entities
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets/sets the exact time when the entity is created
+        /// Gets/sets the exact time when the entity is modified
         /// </summary>
         [Column("modified_at")]
         [Required]
@@ -52,6 +55,5 @@ namespace VideotheekLibrary.Entities
         {
             CreatedAt = ModifiedAt = DateTime.Now;
         }
-
     }
 }

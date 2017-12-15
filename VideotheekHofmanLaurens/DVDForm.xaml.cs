@@ -23,24 +23,38 @@ namespace VideotheekHofmanLaurens
     /// </summary>
     public partial class DVDForm : UserControl
     {
+        /// <summary>
+        /// Sets the event for when the DVD model has to be saved.
+        /// </summary>
+        /// <param name="model"></param>
         public delegate void ModelSavedEventHandler(DVD model);
         public event ModelSavedEventHandler OnModelSaved;
 
+        /// <summary>
+        /// Sets the DVD model used by the current form.
+        /// </summary>
         public DVD Model { get; private set; }
 
+        /// <summary>
+        /// Default constructor that makes a new DVD model for when no DVD model has been sent.
+        /// </summary>
         public DVDForm() : this(new DVD()) { }
 
+        /// <summary>
+        /// Default constructor, for when the DVDForm is loaded.
+        /// </summary>
+        /// <param name="model"></param>
         public DVDForm(DVD model)
         {
             InitializeComponent();
-
-            this.Model = model;
-      
+            this.Model = model;      
             grdDVDForm.DataContext = this;
-
             SetTitle();
         }
 
+        /// <summary>
+        /// Sets the title and the content of the submit button.
+        /// </summary>
         private void SetTitle()
         {
             if (Model.IsNew())
@@ -55,6 +69,13 @@ namespace VideotheekHofmanLaurens
             }
         }
 
+        #region Save/Update DVD model and validation of input
+
+        /// <summary>
+        /// Saves/Updates the model of the DVD, after validating the input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -70,8 +91,7 @@ namespace VideotheekHofmanLaurens
             }
             catch (Exception)
             {
-
-                throw;
+                MessageBox.Show("Saving the DVD was unsuccesful, please only enter valid data.", "Save unsuccesful", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -253,6 +273,8 @@ namespace VideotheekHofmanLaurens
             return validation;
         }
 
+        #endregion
+
         /// <summary>
         /// Shows/hides the situational textboxes (Duration and Episodes)
         /// </summary>
@@ -276,7 +298,5 @@ namespace VideotheekHofmanLaurens
             }
            
         }
-
-       
     }
 }

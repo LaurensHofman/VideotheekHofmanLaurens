@@ -9,8 +9,15 @@ using System.Data.Entity;
 
 namespace VideotheekLibrary.DAL
 {
+    /// <summary>
+    /// Data Access Logic for actions concerning DVDs.
+    /// </summary>
     public static class DAL_DVD
     {
+        /// <summary>
+        /// Gets a list of all the DVDs from the database.
+        /// </summary>
+        /// <returns></returns>
         public static List<DVD> GetAll()
         {
             var ctx = AppDbContext.Instance();
@@ -21,6 +28,10 @@ namespace VideotheekLibrary.DAL
                 .ToList();
         }
 
+        /// <summary>
+        /// Adds a new DVD to the database.
+        /// </summary>
+        /// <param name="model"></param>
         public static void Create(DVD model)
         {
             var ctx = AppDbContext.Instance();
@@ -29,6 +40,10 @@ namespace VideotheekLibrary.DAL
             ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// Updates an existing DVD in the database.
+        /// </summary>
+        /// <param name="model"></param>
         public static void Update(DVD model)
         {
             var ctx = AppDbContext.Instance();
@@ -37,6 +52,12 @@ namespace VideotheekLibrary.DAL
             ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets a filtered list of DVDs from the database.
+        /// </summary>
+        /// <param name="search"></param>
+        /// <param name="filter"></param>
+        /// <returns></returns>
         public static List<DVD> Filter(string search, string filter)
         {
             var ctx = AppDbContext.Instance();
@@ -48,21 +69,18 @@ namespace VideotheekLibrary.DAL
                                 .Where(dvd => dvd.Name.Contains(search) && dvd.DeletedAt == null)
                                 .OrderBy(dvd => dvd.Name)
                                 .ToList();
-                    break;
 
                 case "Director":
                     return ctx.DVDs
                                 .Where(dvd => dvd.Director.Contains(search) && dvd.DeletedAt == null)
                                 .OrderBy(dvd => dvd.Director)
                                 .ToList();
-                    break;
 
                 case "Genres":
                     return ctx.DVDs
                                 .Where(dvd => dvd.Genres.Contains(search) && dvd.DeletedAt == null)
                                 .OrderBy(dvd => dvd.Genres)
                                 .ToList();
-                    break;
 
                 default:
                     return ctx.DVDs

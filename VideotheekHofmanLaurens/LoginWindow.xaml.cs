@@ -29,16 +29,13 @@ namespace VideotheekHofmanLaurens
             showPassword = false;
             txtUsername.Focus();
         }
-
+        
         /// <summary>
         /// Allows to determine whether this window has to close without prompting with a messagebox. For example when the login was succesful.
         /// </summary>
         bool newWindow = false;
 
-        /// <summary>
-        /// Allows to determine whether the button (to switch between visible and hidden password has to show or hide the password.
-        /// </summary>
-        bool showPassword;
+        #region Login and validation of input
 
         /// <summary>
         /// Attempts to login after validating the given credentials
@@ -101,7 +98,9 @@ namespace VideotheekHofmanLaurens
 
             return validation;
         }
-        
+
+        #endregion
+
         #region Close window
 
         /// <summary>
@@ -113,7 +112,7 @@ namespace VideotheekHofmanLaurens
         {
             this.Close();
         }
-
+        
         /// <summary>
         /// Handles the closing of the whole window, called when manually closed through a button or a control.
         /// </summary>
@@ -134,14 +133,18 @@ namespace VideotheekHofmanLaurens
         }
 
         #endregion
-
+        
         #region Toggle Password
-
         /// <summary>
-           /// Determines whether the password has to be shown, and toggles the icon in the button to the appropriate image.
-           /// </summary>
-           /// <param name="sender"></param>
-           /// <param name="e"></param>
+        /// Allows to determine whether the button (to switch between visible and hidden password has to show or hide the password.
+        /// </summary>
+        bool showPassword;
+        
+        /// <summary>
+        /// Determines whether the password has to be shown, and toggles the icon in the button to the appropriate image.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnShowHidePassword_Click(object sender, RoutedEventArgs e)
         {
             if (btnShowHidePassword.Content == FindResource("Show"))

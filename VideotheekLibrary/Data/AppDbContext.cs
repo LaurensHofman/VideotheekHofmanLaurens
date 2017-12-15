@@ -8,16 +8,15 @@ using VideotheekLibrary.Entities;
 
 namespace VideotheekLibrary.Data
 {
+    /// <summary>
+    /// Contains the data and actions required to connect with the database.
+    /// </summary>
     public class AppDbContext : DbContext
     {
         /// <summary>
-        /// Gets/sets the database sets
+        /// Gets/sets the database set for DVDs.
         /// </summary>
-        #region Database Sets
-
         public DbSet<DVD> DVDs { get; set; }
-
-        #endregion
 
         public AppDbContext() : base(@"Data Source=DESKTOP-QJLP9GV\LAURENSSQL;Initial Catalog=VideotheekHofmanLaurens;Persist Security Info=True;User ID=VideotheekHofmanLaurens;Password=hofmanlaurens")
         {
