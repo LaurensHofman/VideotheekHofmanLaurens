@@ -46,7 +46,7 @@
         <TextBox x:Name="txtDuration" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="450,430,620,0" TextWrapping="Wrap" Text="{Binding Path=Model.MovieDuration}" VerticalAlignment="Top"/>
         <TextBox x:Name="txtEpisodes" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="450,430,620,0" TextWrapping="Wrap" Text="{Binding Path=Model.SeriesEpisodes}" VerticalAlignment="Top"/>
 
-        <Button x:Name="btnSave" Content="Save" Background="#FFFCCD8D" FontSize="16" Margin="780,465,320,0" VerticalAlignment="Top" Height="40" Command="{Binding UpdateSourceTrigger=PropertyChanged}" Click="btnSave_Click" />
-
+        <Button x:Name="btnSave" Content="Save" Background="#FFFCCD8D" FontSize="16" Margin="780,465,320,0" VerticalAlignment="Top" Height="40" Click="btnSave_Click" />
+        
     </Grid>
 </UserControl>

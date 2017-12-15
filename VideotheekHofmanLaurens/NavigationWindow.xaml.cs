@@ -20,7 +20,7 @@ namespace VideotheekHofmanLaurens
     /// <summary>
     /// Interaction logic for NavigationWindow.xaml
     /// </summary>
-    public partial class NavigationWindow : Window
+    public partial class NavigationWindow : RibbonWindow
     {
         /// <summary>
         /// Default constructor, for when the NavigationWindow is loaded.
