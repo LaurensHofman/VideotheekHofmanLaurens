@@ -56,8 +56,26 @@
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Home" KeyTip="H">
                 <RibbonGroup Header="DVD's" Foreground="Black">
-                    <RibbonButton x:Name="rbtnAddDVD"  Label=" Add new DVD" Click="rbtnAddDVD_Click" SmallImageSource="Resources/Icons/64DVDAdd.png"/>
-                    <RibbonButton x:Name="rbtnOverviewDVD" SmallImageSource="Resources/Icons/64DVDOverview.png" Label=" DVD Overview" Click="rbtnOverviewDVD_Click"/>
+                    <RibbonButton x:Name="rbtnAddDVD"  Label=" Add new DVD" Click="rbtnAddDVD_Click" SmallImageSource="Resources/Icons/64DVDAdd.png">
+                        <RibbonButton.ToolTip>
+                            <ToolTip>
+                                <WrapPanel>
+                                    <Image Height="16" Width="16" Source="Resources/Icons/16iconi.png"/>
+                                    <TextBlock > Click here to add new DVDs to the collection. </TextBlock>
+                                </WrapPanel>
+                            </ToolTip>
+                        </RibbonButton.ToolTip>
+                    </RibbonButton>
+                    <RibbonButton x:Name="rbtnOverviewDVD" SmallImageSource="Resources/Icons/64DVDOverview.png" Label=" DVD Overview" Click="rbtnOverviewDVD_Click">
+                        <RibbonButton.ToolTip>
+                            <ToolTip>
+                                <WrapPanel>
+                                    <Image Height="16" Width="16" Source="Resources/Icons/16iconi.png"/>
+                                    <TextBlock > Click here to manage all DVDs and manage reservations. </TextBlock>
+                                </WrapPanel>
+                            </ToolTip>
+                        </RibbonButton.ToolTip>
+                    </RibbonButton>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

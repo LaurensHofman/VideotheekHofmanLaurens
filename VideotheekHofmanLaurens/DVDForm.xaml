@@ -10,15 +10,15 @@
         <Label x:Name="lblTitle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" Content="Title placeholder" Margin="10,0" Height="39" VerticalAlignment="Top" Foreground="#FFFCCD8D"/>
         <Label x:Name="lblRequired" Content="* = Required" Height="30" FontSize="14" Margin="10,5,820,0" HorizontalContentAlignment="Right" VerticalAlignment="Top" Foreground="#FFFCCD8D" />
 
-        <Label x:Name="lblNameError" Content="" Height="30" FontSize="14" Margin="10,50,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" Visibility="Collapsed" VerticalAlignment="Top" />
+        <Label x:Name="lblNameError" Height="30" FontSize="14" Margin="10,50,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" Visibility="Collapsed" VerticalAlignment="Top" />
         <Label x:Name="lblName" Content="* Name:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,50,750,0" VerticalAlignment="Top" Foreground="#FFFCCD8D"/>
         <TextBox x:Name="txtName" FontSize="14" Text="{Binding Path=Model.Name}" VerticalContentAlignment="Center" Height="30" Margin="450,50,320,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblStockError" Content="" Height="30" FontSize="14" Visibility="Collapsed" Margin="10,90,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" VerticalAlignment="Top"/>
+        <Label x:Name="lblStockError" Height="30" FontSize="14" Visibility="Collapsed" Margin="10,90,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" VerticalAlignment="Top"/>
         <Label x:Name="lblStock" Content="* Stock:" Height="30" FontSize="16" Margin="10,90,750,0" HorizontalContentAlignment="Right" VerticalAlignment="Top" Foreground="#FFFCCD8D"/>
         <TextBox x:Name="txtStock" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="450,90,620,0" TextWrapping="Wrap" Text="{Binding Path=Model.Stock}" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblPriceError" Content="" Visibility="Collapsed" Height="30" FontSize="14" Margin="10,130,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" VerticalAlignment="Top"/>
+        <Label x:Name="lblPriceError" Visibility="Collapsed" Height="30" FontSize="14" Margin="10,130,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" VerticalAlignment="Top"/>
         <Label x:Name="lblPrice" Content="* Price:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,130,750,0" VerticalAlignment="Top" Foreground="#FFFCCD8D"/>
         <TextBox x:Name="txtPrice" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="450,130,620,0" TextWrapping="Wrap" Text="{Binding Path=Model.Price, StringFormat=C2, ConverterCulture=nl-BE}" VerticalAlignment="Top"/>
 
@@ -31,7 +31,7 @@
         <Label x:Name="lblGenres" Content="Genres:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,310,750,0" VerticalAlignment="Top" Foreground="#FFFCCD8D"/>
         <TextBox x:Name="txtGenres" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="450,310,320,0" TextWrapping="Wrap" Text="{Binding Path=Model.Genres}" VerticalAlignment="Top"/>
 
-        <Label x:Name="lblPEGIError" Content="" Visibility="Collapsed" Height="30" FontSize="14" Margin="10,350,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" VerticalAlignment="Top"/>
+        <Label x:Name="lblPEGIError" Visibility="Collapsed" Height="30" FontSize="14" Margin="10,350,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" VerticalAlignment="Top"/>
         <Label x:Name="lblPEGI" Content="Minimum recommended age:" HorizontalContentAlignment="Right" Height="30" FontSize="16" Margin="10,350,750,0" VerticalAlignment="Top"  Foreground="#FFFCCD8D"/>
         <TextBox x:Name="txtPEGI" FontSize="14" VerticalContentAlignment="Center" Height="30" Margin="450,350,620,0" TextWrapping="Wrap" Text="{Binding Path=Model.PEGIage}" VerticalAlignment="Top"/>
 
@@ -41,12 +41,15 @@
             <ComboBoxItem x:Name="cmbxiTVSeries">TV-Series</ComboBoxItem>
         </ComboBox>
 
-        <Label x:Name="lblDurationEpisodesError" Content="" Visibility="Collapsed" Height="30" FontSize="14" Margin="10,430,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" VerticalAlignment="Top"/>
+        <Label x:Name="lblDurationEpisodesError" Visibility="Collapsed" Height="30" FontSize="14" Margin="10,430,0,0" HorizontalContentAlignment="Left" Foreground="#FFF37B72" VerticalAlignment="Top"/>
         <Label x:Name="lblDurationOrEpisodes" Height="30" HorizontalContentAlignment="Right" FontSize="16" Margin="10,430,750,0" VerticalAlignment="Top" Foreground="#FFFCCD8D"/>
         <TextBox x:Name="txtDuration" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="450,430,620,0" TextWrapping="Wrap" Text="{Binding Path=Model.MovieDuration}" VerticalAlignment="Top"/>
         <TextBox x:Name="txtEpisodes" FontSize="14" VerticalContentAlignment="Center" Visibility="Collapsed" Height="30" Margin="450,430,620,0" TextWrapping="Wrap" Text="{Binding Path=Model.SeriesEpisodes}" VerticalAlignment="Top"/>
 
-        <Button x:Name="btnSave" Content="Save" Background="#FFFCCD8D" FontSize="16" Margin="780,465,320,0" VerticalAlignment="Top" Height="40" Click="btnSave_Click" />
-        
+        <Button x:Name="btnSave" Content="Save" Background="#FFFCCD8D" FontSize="16" Margin="780,465,320,0" VerticalAlignment="Top" Height="50" Click="btnSave_Click" />
+        <Button x:Name="btnSaveNewDVD" Background="#FFFCCD8D" FontSize="16" Margin="660,465,440,0" VerticalAlignment="Top" Height="50" Click="btnSaveNewDVD_Click">
+            <TextBlock TextWrapping="Wrap">Save and new DVD</TextBlock>
+        </Button>
+
     </Grid>
 </UserControl>

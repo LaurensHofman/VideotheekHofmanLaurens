@@ -130,7 +130,7 @@ namespace VideotheekHofmanLaurens
             else
             {
                 _changedValue.Stock = _changedValue.ReservedAmount;
-                lblError.Content = $"Stock from ({_changedValue.Name}) cannot be lower than the current Reserved Amount.";
+                lblError.Content = $"Stock ({_changedValue.Name}) cannot be lower than the current Reserved Amount.";
             }
 
             BindData();
@@ -239,19 +239,12 @@ namespace VideotheekHofmanLaurens
 
             if (!string.IsNullOrWhiteSpace(txtSearch.Text))
             {
-                if (cmbxFilter.SelectedValue.ToString() == "-- Select Filter --")
-                {
-                    lblError.Content = "Please select a filter";
-                }
-                else
-                {
-                    filterText = txtSearch.Text;
-                    filterCategory = cmbxFilter.SelectedValue.ToString();
+                filterText = txtSearch.Text;
+                filterCategory = cmbxFilter.SelectedValue.ToString();
 
-                    dataGridIsFiltered = true;
+                dataGridIsFiltered = true;
 
-                    BindData();
-                }
+                BindData();
             }
             else
             {
@@ -269,7 +262,7 @@ namespace VideotheekHofmanLaurens
         {
             dataGridIsFiltered = false;
             filterText = "";
-            filterCategory = "-- Select Filter --";
+            filterCategory = "";
 
             cmbxFilter.SelectedIndex = 0;
             txtSearch.Text = "";

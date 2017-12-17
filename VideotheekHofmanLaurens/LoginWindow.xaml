@@ -13,10 +13,13 @@
         <Image x:Key="Hide" Source="Resources/Icons/16iconEyeClose.png" Height="16" Width="16"/>
     </Window.Resources>
     <Grid x:Name="grdLoginWindow">
-        <Image x:Name="imgLoginVideotheek" Margin="0,0,-0.4,0.4" Source="Resources/Images/Cinema Screen.jpg"  Height="470" VerticalAlignment="Bottom" Stretch="UniformToFill" Opacity="0.8"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/Images/Cinema Screen.jpg" Opacity="0.8"/>
+        </Grid.Background>
         <Label x:Name="lblLoginTitle" Content="Welcome to 't Videotheeksken" HorizontalContentAlignment="Center" FontSize="20" Height="40" Margin="10,10,10,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
         <Label x:Name="lblLoginCredentials" Content="Please enter your login credentials" HorizontalContentAlignment="Center" FontSize="16" Height="40" Margin="10,80,10,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
-        <Label x:Name="lblWrongCredentials" Visibility="Collapsed" Content="Your username and/or password were wrong" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="10,125,9.6,0" Foreground="#FFD90000"/>
+        
+        <Label x:Name="lblWrongCredentials" Visibility="Collapsed" Content="Your username and/or password were incorrect" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="10,125,9.6,0" Foreground="#FFD90000"/>
 
         <Label x:Name="lblUsername" Content="Username:" HorizontalContentAlignment="Right" FontSize="16" Height="30" Margin="10,160,443.6,0" VerticalAlignment="Top" Foreground="#FFFFCC86"/>
         <TextBox x:Name="txtUsername" KeyboardNavigation.TabIndex="0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="250,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>

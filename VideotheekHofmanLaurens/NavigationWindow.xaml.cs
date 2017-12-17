@@ -29,6 +29,7 @@ namespace VideotheekHofmanLaurens
         {
             InitializeComponent();
             SetTitle();
+            mainControl.Content = new DVDOverview();
         }
 
         #region Set Title

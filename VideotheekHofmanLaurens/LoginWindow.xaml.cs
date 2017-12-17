@@ -26,14 +26,9 @@ namespace VideotheekHofmanLaurens
         public LoginWindow()
         {
             InitializeComponent();
-            showPassword = false;
+            newWindow = false;
             txtUsername.Focus();
         }
-        
-        /// <summary>
-        /// Allows to determine whether this window has to close without prompting with a messagebox. For example when the login was succesful.
-        /// </summary>
-        bool newWindow = false;
 
         #region Login and validation of input
 
@@ -101,7 +96,78 @@ namespace VideotheekHofmanLaurens
 
         #endregion
 
+        #region Toggle Password
+       
+        /// <summary>
+        /// Determines whether the password has to be shown, and toggles the icon in the button to the appropriate image.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnShowHidePassword_Click(object sender, RoutedEventArgs e)
+        {
+            btnShowHidePassword.Content =
+                (txtPasswordVisible.Visibility == Visibility.Collapsed) ?
+                FindResource("Hide") : FindResource("Show");
+            
+            ToggleShowPassword();
+        }
+
+        /// <summary>
+        /// Toggles the visibility of the PasswordBox to show the hidden password and the visibility of the TextBox to show the visible password.
+        /// </summary>
+        private void ToggleShowPassword()
+        {
+            if (txtPasswordVisible.Visibility == Visibility.Collapsed)
+            {
+                txtPasswordVisible.Visibility = Visibility.Visible;
+                pwdPassword.Visibility = Visibility.Collapsed;
+                txtPasswordVisible.Focus();
+            }
+            else
+            {
+                pwdPassword.Visibility = Visibility.Visible;
+                txtPasswordVisible.Visibility = Visibility.Collapsed;
+                pwdPassword.Focus();
+            }
+        }
+
+        /// <summary>
+        /// Whenever the text is changed in the textbox, it will synchronize with the password box and put the text cursor at the end of the textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtPasswordVisible_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            pwdPassword.Password = txtPasswordVisible.Text;
+
+            int start = txtPasswordVisible.Text.Length;
+            int length = 0;
+            txtPasswordVisible.Select(start, length);
+        }
+
+        /// <summary>
+        /// Whenever the text is changed in the passwordbox, it will synchronize with the textbox and put the text cursor at the end of the passwordbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pwdPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            txtPasswordVisible.Text = pwdPassword.Password;
+
+            int start = pwdPassword.Password.Length;
+            int length = 0;
+            pwdPassword.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .Invoke(pwdPassword, new object[] { start, length });
+        }
+
+        #endregion
+
         #region Close window
+
+        /// <summary>
+        /// Allows to determine whether this window has to close without prompting with a messagebox. For example when the login was succesful.
+        /// </summary>
+        bool newWindow;
 
         /// <summary>
         /// Closes the window when clicked.
@@ -112,7 +178,7 @@ namespace VideotheekHofmanLaurens
         {
             this.Close();
         }
-        
+
         /// <summary>
         /// Handles the closing of the whole window, called when manually closed through a button or a control.
         /// </summary>
@@ -129,87 +195,9 @@ namespace VideotheekHofmanLaurens
             {
                 e.Cancel = false;
             }
-
         }
 
         #endregion
-        
-        #region Toggle Password
-        /// <summary>
-        /// Allows to determine whether the button (to switch between visible and hidden password has to show or hide the password.
-        /// </summary>
-        bool showPassword;
-        
-        /// <summary>
-        /// Determines whether the password has to be shown, and toggles the icon in the button to the appropriate image.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnShowHidePassword_Click(object sender, RoutedEventArgs e)
-        {
-            if (btnShowHidePassword.Content == FindResource("Show"))
-                btnShowHidePassword.Content = FindResource("Hide");
 
-            else
-                btnShowHidePassword.Content = FindResource("Show");
-
-
-            if (showPassword == false)
-                showPassword = true;
-            else
-                showPassword = false;
-
-
-            ToggleShowPassword();
-        }
-
-        /// <summary>
-        /// Toggles the visibility of the PasswordBox to show the hidden password and the visibility of the TextBox to show the visible password.
-        /// </summary>
-        private void ToggleShowPassword()
-        {
-            pwdPassword.Visibility = Visibility.Collapsed;
-            txtPasswordVisible.Visibility = Visibility.Collapsed;
-
-            if (showPassword)
-            {
-                txtPasswordVisible.Visibility = Visibility.Visible;
-                txtPasswordVisible.Focus();
-            }
-            else
-            {
-                pwdPassword.Visibility = Visibility.Visible;
-                pwdPassword.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Whenever the text is changed in the textbox, it will synchronize with the password box and put the text cursor at the end of the textbox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtPasswordVisible_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            pwdPassword.Password = txtPasswordVisible.Text;
-            int start = txtPasswordVisible.Text.Length;
-            int length = 0;
-            txtPasswordVisible.Select(start, length);
-        }
-
-        /// <summary>
-        /// Whenever the text is changed in the passwordbox, it will synchronize with the textbox and put the text cursor at the end of the passwordbox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pwdPassword_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            txtPasswordVisible.Text = pwdPassword.Password;
-            int start = pwdPassword.Password.Length;
-            int length = 0;
-            pwdPassword.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .Invoke(pwdPassword, new object[] { start, length });
-        }
-
-        #endregion
     }
 }

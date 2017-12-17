@@ -9,28 +9,28 @@
              d:DesignHeight="300" d:DesignWidth="300" Background="White">
 
     <Grid x:Name="grdOverview">
-        <Label x:Name="lblSearch" VerticalAlignment="Top" Content="Search: " Width="50" HorizontalAlignment="Left" Margin="0,5,0,0"/>
+        <Label x:Name="lblSearch" VerticalContentAlignment="Center" VerticalAlignment="Top" Content="Search: " Height="30" Width="50" HorizontalAlignment="Left" Margin="0,5,0,0"/>
         <TextBox x:Name="txtSearch" VerticalContentAlignment="Center" Height="30" VerticalAlignment="Top" Margin="50,5,0,0" HorizontalAlignment="Left" Width="250"/>
-        <ComboBox x:Name="cmbxFilter" SelectedIndex="0" Height="30" VerticalContentAlignment="Center" Margin="350,5,0,0" Width="125" VerticalAlignment="Top" HorizontalContentAlignment="Center" SelectedValuePath="Content" HorizontalAlignment="Left">
-            <ComboBoxItem>-- Select Filter --</ComboBoxItem>
+        <ComboBox x:Name="cmbxFilter" SelectedIndex="0" Height="30" VerticalContentAlignment="Center" Margin="500,5,0,0" Width="125" VerticalAlignment="Top" HorizontalContentAlignment="Center" SelectedValuePath="Content" HorizontalAlignment="Left">
+            <ComboBoxItem>-- Specific Filters --</ComboBoxItem>
             <ComboBoxItem>Name</ComboBoxItem>
             <ComboBoxItem>Director</ComboBoxItem>
             <ComboBoxItem>Genres</ComboBoxItem>
         </ComboBox>
-        <Button x:Name="btnFilter" Height="30" Width="100" VerticalAlignment="Top" Content="Search" Click="btnFilter_Click" Margin="525,5,0,0" HorizontalAlignment="Left"/>
-        <Button x:Name="btnResetFilter" Height="30" Width="100" VerticalAlignment="Top" Content="Clear filter" Click="btnResetFilter_Click"  Margin="675,5,0,0" HorizontalAlignment="Left"/>
+        <Button x:Name="btnFilter" Height="30" Width="100" VerticalAlignment="Top" Content="Search" Click="btnFilter_Click" Margin="350,5,0,0" HorizontalAlignment="Left"/>
+        <Button x:Name="btnResetFilter" Height="30" Width="100" VerticalAlignment="Top" Content="Clear filtering" Click="btnResetFilter_Click"  Margin="675,5,0,0" HorizontalAlignment="Left"/>
         <Label x:Name="lblError" Foreground="Red" VerticalAlignment="Top" Margin="0,35,0,0" HorizontalContentAlignment="Left" Height="30" FontSize="16"/>
         <DataGrid Name="grdDVDOverview" Margin="0,65,0,0" RowDetailsVisibilityMode="Collapsed" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" RowEditEnding="grdDVDOverview_RowEditEnding">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Header="Name" />
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="ReceiveButton">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="btnReceiveDVD" Content="Receive DVD" Click="btnReceiveDVD_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="ReservationButton">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="btnReservation" Content="Reservation" Click="btnReservation_Click"/>
@@ -47,21 +47,21 @@
                 <DataGridTextColumn Binding="{Binding Path=DVDType}" IsReadOnly="True" Header="DVD Type" />
                 <DataGridTextColumn Binding="{Binding Path=MovieDuration}" IsReadOnly="True" Header="Duration (minutes)" />
                 <DataGridTextColumn Binding="{Binding Path=SeriesEpisodes}" IsReadOnly="True" Header="Episodes" />
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="ShowDescriptionButton">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="btnShowDescription" Content="Show/Hide Description" Click="btnShowDescription_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="UpdateDVDButton">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="btnUpdateDVD" Content="Update" Click="btnUpdateDVD_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="DeleteDVDButton">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="btnDeleteDVD" Content="Delete" Click="btnDeleteDVD_Click"/>
@@ -70,14 +70,12 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
+                <DataTemplate x:Name="DescriptionDetailsRow">
                     <WrapPanel>
-                        <TextBlock Text="Description: " FontSize="12"/>
                         <TextBlock Text="{Binding Path=Description}" FontSize="12" Height="35" VerticalAlignment="Stretch" MaxWidth="1400" TextWrapping="Wrap"/>
                     </WrapPanel>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
-
         </DataGrid>
     </Grid>
 </UserControl>

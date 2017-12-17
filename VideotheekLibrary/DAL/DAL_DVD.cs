@@ -84,7 +84,8 @@ namespace VideotheekLibrary.DAL
 
                 default:
                     return ctx.DVDs
-                                .Where(dvd => dvd.DeletedAt == null)
+                                .Where(dvd => dvd.DeletedAt == null && 
+                                (dvd.Genres.Contains(search) || dvd.Director.Contains(search) || dvd.Name.Contains(search)))
                                 .OrderBy(dvd => dvd.Name)
                                 .ToList();
             }

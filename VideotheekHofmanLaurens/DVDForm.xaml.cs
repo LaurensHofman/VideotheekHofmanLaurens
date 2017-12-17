@@ -96,6 +96,29 @@ namespace VideotheekHofmanLaurens
         }
 
         /// <summary>
+        /// Saves the model of the DVD, after validating the input and opens a new DVD form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSaveNewDVD_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Validate())
+                {
+                    if (BL_DVD.Save(Model))
+                    {
+                        this.Content = new DVDForm();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Saving the DVD was unsuccesful, please only enter valid data.", "Save unsuccesful", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
         /// Validates the values from the textboxes to avoid errors in the DVD Model
         /// </summary>
         /// <returns></returns>

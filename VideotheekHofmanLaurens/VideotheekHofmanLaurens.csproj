@@ -211,5 +211,8 @@
     <Resource Include="Resources\Icons\DoorCloserWhite512.png" />
     <Resource Include="Resources\Icons\DoorOpenWhite512.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16iconi.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
