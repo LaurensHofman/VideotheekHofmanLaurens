@@ -124,7 +124,7 @@ namespace VideotheekHofmanLaurens
         /// <returns></returns>
         private bool Validate()
         {
-            bool validation = true;
+            bool _validation = true;
 
             #region Hides error labels
 
@@ -143,13 +143,13 @@ namespace VideotheekHofmanLaurens
             {
                 lblNameError.Content = "Cannot be empty";
                 lblNameError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             else if (Model.Name.Length > 255)
             {
                 lblNameError.Content = "Cannot be longer than 255 characters";
                 lblNameError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             #endregion
 
@@ -158,61 +158,62 @@ namespace VideotheekHofmanLaurens
             {
                 lblStockError.Content = "Cannot be empty";
                 lblStockError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             else if (!int.TryParse(txtStock.Text, out int result))
             {
                 lblStockError.Content = "Has to be a whole number";
                 lblStockError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             else if (Model.Stock < 0)
             {
                 lblStockError.Content = "Cannot be below 0";
                 lblStockError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             else if (Model.Stock > 99999)
             {
                 lblStockError.Content = "Cannot be higher than 99999";
                 lblStockError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             if (Model.Stock < Model.ReservedAmount)
             {
                 lblStockError.Content = $"Cannot be lower than the reserved amount ({Model.ReservedAmount})";
                 lblStockError.Visibility = Visibility.Visible;
-                validation = false;                   
+                _validation = false;                   
             }
             #endregion
 
             #region Validates Price
-            double priceresult = 0;
-            string priceText = txtPrice.Text.Replace("€", "").Replace(" ", "").Replace(".","") ;
 
-            if (string.IsNullOrWhiteSpace(priceText))
+            double _priceresult = 0;
+            string _priceText = txtPrice.Text.Replace("€", "").Replace(" ", "").Replace(".","") ;
+
+            if (string.IsNullOrWhiteSpace(_priceText))
             {
                 lblPriceError.Content = "Cannot be empty";
                 lblPriceError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
-            else if (!double.TryParse(priceText, out priceresult))
+            else if (!double.TryParse(_priceText, out _priceresult))
             {
                 lblPriceError.Content = "Has to be a valid number";
                 lblPriceError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             else if (Model.Price < 0)
             {
                 lblPriceError.Content = "Cannot be below € 0.00";
                 lblPriceError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             else if (Model.Price > 99999)
             {
                 lblPriceError.Content = "Cannot be over € 99999.00";
                 lblPriceError.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
             #endregion
 
@@ -223,19 +224,19 @@ namespace VideotheekHofmanLaurens
                 {
                     lblPEGIError.Content = "Has to be a whole number";
                     lblPEGIError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
                 else if (Model.PEGIage < 0)
                 {
                     lblPEGIError.Content = "Cannot be below 0";
                     lblPEGIError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
                 else if (Model.PEGIage > 21)
                 {
                     lblPEGIError.Content = "PEGI age doesn't go over 21";
                     lblPEGIError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
                  
             }
@@ -248,19 +249,19 @@ namespace VideotheekHofmanLaurens
                 {
                     lblDurationEpisodesError.Content = "Has to be a whole number";
                     lblDurationEpisodesError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
                 else if (Model.MovieDuration < 0)
                 {
                     lblDurationEpisodesError.Content = "Cannot be below 0";
                     lblDurationEpisodesError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
                 else if (Model.MovieDuration > 99999)
                 {
                     lblDurationEpisodesError.Content = "Cannot be over 99999";
                     lblDurationEpisodesError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
 
             }
@@ -273,19 +274,19 @@ namespace VideotheekHofmanLaurens
                 {
                     lblDurationEpisodesError.Content = "Has to be a whole number";
                     lblDurationEpisodesError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
                 else if (Model.SeriesEpisodes < 0)
                 {
                     lblDurationEpisodesError.Content = "Cannot be below 0";
                     lblDurationEpisodesError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
                 else if (Model.SeriesEpisodes > 99999)
                 {
                     lblDurationEpisodesError.Content = "Cannot be over 99999";
                     lblDurationEpisodesError.Visibility = Visibility.Visible;
-                    validation = false;
+                    _validation = false;
                 }
 
             }
@@ -293,7 +294,7 @@ namespace VideotheekHofmanLaurens
 
             #endregion
 
-            return validation;
+            return _validation;
         }
 
         #endregion

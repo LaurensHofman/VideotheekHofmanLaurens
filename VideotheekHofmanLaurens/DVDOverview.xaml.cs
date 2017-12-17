@@ -47,15 +47,15 @@ namespace VideotheekHofmanLaurens
         /// <summary>
         /// A bool to determine whether the DataGrid is filtered or not.
         /// </summary>
-        bool dataGridIsFiltered;
+        bool _dataGridIsFiltered;
         /// <summary>
         /// A string that remembers the last used text to filter.
         /// </summary>
-        string filterText;
+        string _filterText;
         /// <summary>
         /// A string that remembers the last used filter category.
         /// </summary>
-        string filterCategory;
+        string _filterCategory;
 
         #endregion
 
@@ -66,7 +66,7 @@ namespace VideotheekHofmanLaurens
         {
             InitializeComponent();
             BindData();
-            dataGridIsFiltered = false;
+            _dataGridIsFiltered = false;
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace VideotheekHofmanLaurens
         /// </summary>
         private void BindData()
         {
-            if (dataGridIsFiltered == false)
+            if (_dataGridIsFiltered == false)
             {
                 dataSource = new ObservableCollection<DVD>(BL_DVD.GetAll());
                 dataSource.CollectionChanged += DataSourceChanged;
@@ -83,7 +83,7 @@ namespace VideotheekHofmanLaurens
             }
             else
             {
-                filteredSource = new ObservableCollection<DVD>(BL_DVD.Filter(filterText, filterCategory));
+                filteredSource = new ObservableCollection<DVD>(BL_DVD.Filter(_filterText, _filterCategory));
                 filteredSource.CollectionChanged += DataSourceChanged;
                 grdDVDOverview.ItemsSource = filteredSource;
                 grdDVDOverview.DataContext = filteredSource;
@@ -239,10 +239,10 @@ namespace VideotheekHofmanLaurens
 
             if (!string.IsNullOrWhiteSpace(txtSearch.Text))
             {
-                filterText = txtSearch.Text;
-                filterCategory = cmbxFilter.SelectedValue.ToString();
+                _filterText = txtSearch.Text;
+                _filterCategory = cmbxFilter.SelectedValue.ToString();
 
-                dataGridIsFiltered = true;
+                _dataGridIsFiltered = true;
 
                 BindData();
             }
@@ -260,9 +260,9 @@ namespace VideotheekHofmanLaurens
         /// <param name="e"></param>
         private void btnResetFilter_Click(object sender, RoutedEventArgs e)
         {
-            dataGridIsFiltered = false;
-            filterText = "";
-            filterCategory = "";
+            _dataGridIsFiltered = false;
+            _filterText = "";
+            _filterCategory = "";
 
             cmbxFilter.SelectedIndex = 0;
             txtSearch.Text = "";

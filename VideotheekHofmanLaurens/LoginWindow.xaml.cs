@@ -26,7 +26,7 @@ namespace VideotheekHofmanLaurens
         public LoginWindow()
         {
             InitializeComponent();
-            newWindow = false;
+            _newWindow = false;
             txtUsername.Focus();
         }
 
@@ -42,7 +42,7 @@ namespace VideotheekHofmanLaurens
             if (Validate())
             {
                 new NavigationWindow().Show();
-                newWindow = true;
+                _newWindow = true;
                 this.Close();
             }
         }
@@ -53,7 +53,7 @@ namespace VideotheekHofmanLaurens
         /// <returns></returns>
         private bool Validate()
         {
-            bool validation = true;
+            bool _validation = true;
 
             #region Hides error labels
 
@@ -68,13 +68,13 @@ namespace VideotheekHofmanLaurens
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
                 lblEmptyUsername.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
 
             if (string.IsNullOrWhiteSpace(pwdPassword.Password))
             {
                 lblEmptyPassword.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
 
             if (   
@@ -84,14 +84,14 @@ namespace VideotheekHofmanLaurens
                )
             {
                 lblWrongCredentials.Visibility = Visibility.Visible;
-                validation = false;
+                _validation = false;
             }
 
             #endregion
 
             pwdPassword.Password = "";
 
-            return validation;
+            return _validation;
         }
 
         #endregion
@@ -167,7 +167,7 @@ namespace VideotheekHofmanLaurens
         /// <summary>
         /// Allows to determine whether this window has to close without prompting with a messagebox. For example when the login was succesful.
         /// </summary>
-        bool newWindow;
+        bool _newWindow;
 
         /// <summary>
         /// Closes the window when clicked.
@@ -186,7 +186,7 @@ namespace VideotheekHofmanLaurens
         /// <param name="e"></param>
         private void wndLoginWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (newWindow == false)
+            if (_newWindow == false)
             {
                 e.Cancel = (MessageBox.Show("Are you sure you want to exit?", "Exit program?", MessageBoxButton.YesNo)
                     == MessageBoxResult.No);

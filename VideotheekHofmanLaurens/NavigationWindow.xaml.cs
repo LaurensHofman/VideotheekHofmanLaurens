@@ -37,7 +37,7 @@ namespace VideotheekHofmanLaurens
         /// <summary>
         /// Constant part of the window title.
         /// </summary>
-        private const string TITLE = "'t Videotheeksken";
+        private const string _TITLE = "'t Videotheeksken";
 
         /// <summary>
         /// Gets the content of the label (of pressed the button) to use it in the window title.
@@ -60,7 +60,7 @@ namespace VideotheekHofmanLaurens
                 _title += label + " - ";
             }
 
-            _title += TITLE;
+            _title += _TITLE;
             this.Title = _title;
         }
 
